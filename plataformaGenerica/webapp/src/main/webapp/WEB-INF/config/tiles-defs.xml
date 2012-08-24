@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+    <definition name="base.definition"
+        template="/WEB-INF/jsp/template/layout.jsp">
+        <put-attribute name="title" value="" />
+        <put-attribute name="header" value="/WEB-INF/jsp/template/header.jsp" />
+        <put-attribute name="menu" value="/WEB-INF/jsp/template/menu.jsp" />
+        <put-attribute name="body" value="" />
+        <put-attribute name="footer" value="/WEB-INF/jsp/template/footer.jsp" />
+        <put-attribute name="headjs" value=""/>
+    </definition>
+ 
+    <definition name="welcome" extends="base.definition">
+        <put-attribute name="title" value="Contact Manager" />
+        <put-attribute name="body" value="/WEB-INF/jsp/inicio/inicio.jsp" />
+    </definition>
+    
+    <definition name="plantillaFormulario" extends="base.definition">
+        <put-attribute name="title" value="Formulario plantilla" />
+        <put-attribute name="headjs" value="/WEB-INF/jsp/includes/head/cabeceraEstandarFormulario.jsp"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/plantillas/formulario/formulario.jsp" />
+    </definition>
+    
+    
+    <definition name="plantillaBuscador" extends="base.definition">
+        <put-attribute name="title" value="Formulario buscador" />
+        <put-attribute name="headjs" value="/WEB-INF/jsp/includes/head/cabeceraEstandarBuscador.jsp"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/plantillas/buscador/buscador.jsp" />
+    </definition>
+ 
+</tiles-definitions>
