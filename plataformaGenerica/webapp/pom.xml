@@ -13,6 +13,7 @@
 		<jstl.version>1.2</jstl.version>
 		<tiles.version>2.2.2</tiles.version>
 		<webflow.version>2.3.1.RELEASE</webflow.version>
+		<hibernate.validator.version>4.3.0.Final</hibernate.validator.version>
 	</properties>
 	<artifactId>webapp</artifactId>
 	<packaging>war</packaging>
@@ -34,6 +35,11 @@
 			<groupId>org.dbp</groupId>
 			<artifactId>service</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+    		<groupId>org.hibernate</groupId>
+    		<artifactId>hibernate-validator</artifactId>
+    		<version>${hibernate.validator.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.tomcat</groupId>

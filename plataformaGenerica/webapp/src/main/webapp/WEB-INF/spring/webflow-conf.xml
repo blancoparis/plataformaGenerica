@@ -19,17 +19,24 @@
 	</webflow:flow-executor>
 
 	<webflow:flow-builder-services id="flowBuilderServices"
-		view-factory-creator="mvcViewFactoryCreator" />
+		view-factory-creator="mvcViewFactoryCreator" 
+		validator="validator" />
+	<!-- Establecemos el validador -->	
+	<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />	
 
 	<bean id="mvcViewFactoryCreator"
 		class="org.springframework.webflow.mvc.builder.MvcViewFactoryCreator">
 		<property name="viewResolvers" ref="tilesViewResolver" />
 	</bean>
+	<bean id="tilesViewResolver" class="org.springframework.js.ajax.AjaxUrlBasedViewResolver">
+    	<property name="viewClass" value="org.springframework.webflow.mvc.view.FlowAjaxTilesView"/>
+	</bean>
+	<!-- 
 	<bean id="tilesViewResolver"
 		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
 		<property name="viewClass"
 			value="org.springframework.web.servlet.view.tiles2.TilesView" />
 		
 	</bean>
-
+	-->
 </beans>

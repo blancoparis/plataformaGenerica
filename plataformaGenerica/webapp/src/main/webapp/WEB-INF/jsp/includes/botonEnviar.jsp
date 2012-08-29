@@ -4,4 +4,5 @@
 <fmt:bundle basename="app">
 	<c:set var="etiquetaBoton"><fmt:message key="geberal.button.enviar" /></c:set>
 	<input type="submit" value="${etiquetaBoton}" id="botonSubmit" />
+	<input type="hidden" name="_eventId" value="submit" />
 </fmt:bundle>

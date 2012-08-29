@@ -1,12 +1,23 @@
 <flow xmlns="http://www.springframework.org/schema/webflow"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.springframework.org/schema/webflow
-                          http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+                          http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd"
+      start-state="setupForm">
 
-    <view-state id="welcome" view="welcome">
-        <transition on="submit" to="bookingConfirmed" />
+	<action-state id="setupForm">
+		<evaluate expression="formAction.setupForm"/>
+		<transition on="success" to="welcome" /> 
+	</action-state>
+
+    <view-state id="welcome" view="pruebaFormulario" model="form" >
+        <transition on="submit" to="bookingCancelled" validate="true" bind="true" >
+<!--         	<evaluate expression="formAction.bind"/> -->
+        </transition>
     </view-state>
 
-    <end-state id="bookingCancelled" />
-		
+    <action-state id="bookingCancelled" >
+    	<evaluate expression="formAction.confirmar"/>
+    	<transition on="success" to="welcome"/>
+    </action-state>
+	<bean-import resource="usuario-bean.xml"/>	
 </flow>

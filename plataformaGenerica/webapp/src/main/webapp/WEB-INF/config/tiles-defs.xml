@@ -30,5 +30,13 @@
         <put-attribute name="headjs" value="/WEB-INF/jsp/includes/head/cabeceraEstandarBuscador.jsp"/>
         <put-attribute name="body" value="/WEB-INF/jsp/plantillas/buscador/buscador.jsp" />
     </definition>
+    
+    
+	<definition name="pruebaFormulario" extends="base.definition">
+        <put-attribute name="title" value="Sin poner clave" />
+        <put-attribute name="headjs" value="/WEB-INF/jsp/includes/head/cabeceraEstandarFormulario.jsp"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/pruebas/formulario.jsp" />
+    </definition>
+    
  
 </tiles-definitions>

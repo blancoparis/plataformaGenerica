@@ -14,6 +14,8 @@ public class Prueba implements EntityBD<Long>{
     @GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
+	private String prueba;
+	
 	public Long getId() {
 		return id;
 	}
@@ -21,6 +23,16 @@ public class Prueba implements EntityBD<Long>{
 	public void setId(Long id) {
 		this.id = id;
 	}
+
+	public String getPrueba() {
+		return prueba;
+	}
+
+	public void setPrueba(String prueba) {
+		this.prueba = prueba;
+	}
+	
+	
 	
 
 }
