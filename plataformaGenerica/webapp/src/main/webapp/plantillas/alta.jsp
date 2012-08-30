@@ -17,7 +17,7 @@
     <script type="text/javascript" src="<c:url value='/resources/jquery/js/jquery-ui-1.8.22.custom.min.js'/>" ></script>
     <script src="<c:url value='/resources/template/js/util.js' />"></script>
     <script src="<c:url value='/resources/jquery/js/jquery.dataTables.min.js' />"></script>
-
+	<script src="http://html5form.googlecode.com/svn/trunk/jquery.html5form-1.5-min.js"></script>
     
     <link type="text/css" href="<c:url value='/resources/jquery/css/smoothness/jquery-ui-1.8.22.custom.css'/>" rel="stylesheet" />
     <link type="text/css" href="<c:url value='/resources/jquery/css/jquery.dataTables.css'/>" rel="stylesheet" />
@@ -30,6 +30,9 @@
     <script type="text/javascript" charset="utf-8">
     
 			$(document).ready(function() {
+				/*alert('eco');
+				$("#fomrulario").html5form();
+				alert('adios');*/
 				oTable = $('#example').dataTable({
 					"bJQueryUI": true,
 					"sPaginationType": "full_numbers"
@@ -79,7 +82,7 @@
 		        <article>
 		            <section>
 		                <h1><a href="http://www.red-team-design.com/css3-dropdown-menu"><font><font class="">Titulo</font></font></a></h1>
-		                <form action="alta.jsp">
+		                <form action="alta.jsp" id="fomrulario">
 							<dbp:grupoBasico legend="datos">
 								<dbp:campoBasico id="fecha" type="date"  label="Fecha" requiered="true" value="2011-09-08"/>
 								<dbp:campoBasico id="correo" type="email"  label="Correo" requiered="true" value="david@gmail.com"/>
@@ -89,7 +92,7 @@
 								<dbp:campoBasico id="pruebaFecha" type="date"  label="PRueba de feccha" requiered="false" />
 							</dbp:grupoBasico>
 							<div align="center">
-								<p><input type="submit" value="Enviar" id="botonSubmit"/></p>
+								<p><input type="button" value="Enviar" id="botonSubmit"/></p>
 							</div>
 						</form>
 		            </section>

@@ -1,3 +1,12 @@
+var userAgent = navigator.userAgent.toLowerCase();
+jQuery.browser = {
+	version: (userAgent.match( /.+(?:rv|it|ra|ie|me)[\/: ]([\d.]+)/ ) || [])[1],
+	chrome: /chrome/.test( userAgent ),
+	safari: /webkit/.test( userAgent ) && !/chrome/.test( userAgent ),
+	opera: /opera/.test( userAgent ),
+	msie: /msie/.test( userAgent ) && !/opera/.test( userAgent ),
+	mozilla: /mozilla/.test( userAgent ) && !/(compatible|webkit)/.test( userAgent )
+};
 function initMenu() {
           $('#menu ul').hide(); // Hide the submenu
           if ($('#menu li').has('ul')) $('#menu ul').prev().addClass('expandable'); // Expand/collapse a submenu when it exists  
@@ -31,7 +40,10 @@ function establecerBotonSubmit(nombreBoton,mensajeTitulo,mensajeConfirmacion){
 	});
 	
 	$("#"+nombreBoton).button();
-	    $('form').submit(function(){
+
+
+	if(!$.browser.msie){
+	    $('form').submit(function(){	
 	    		var confirmacionSubmit= $("#"+nombreBoton).data("confirmacionSubmit");
 	    		if(jQuery.type(confirmacionSubmit) === "undefined" || confirmacionSubmit == 'inicio' ){
 			    var b=true;
@@ -51,7 +63,8 @@ function establecerBotonSubmit(nombreBoton,mensajeTitulo,mensajeConfirmacion){
 	    			}
 	    		}
 		  });
-
+	}
+	// TODO falta por montar lo del explorer
 }
 
         // When document ready, call initMenu() function 
