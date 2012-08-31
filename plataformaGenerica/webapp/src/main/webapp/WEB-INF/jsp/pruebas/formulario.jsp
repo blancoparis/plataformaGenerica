@@ -9,6 +9,7 @@
 			<h1><font><font><fmt:message key="pruebas.formulario.seccion.titulo" /></font></font></h1>
 			<p>
 				<form:form action="${flowExecutionUrl}" commandName="form">
+					<plantilla:erroresNegocio form="${form}" />	
 					<input type="hidden" name="_flowExecutionKey"  value="${flowExecutionKey}"/>
 					<dbp:grupoBasico >
 						<%--
@@ -40,13 +41,15 @@
 						<c:set var="etiquetaDescripcion"><fmt:message key="pruebas.formulario.campo.descripcion" /></c:set>
 						<dbp:campoBasico id="descripcion"	type="text"
 							label="${etiquetaDescripcion}" readonly="${readOnly}" 
-							requiered="true" value="${form.descripcion}" />
-						<form:errors path="descripcion" 
-						id="error_descripcion" cssClass="errorCampo" cssStyle="display:none;"/>							
+							requiered="false" value="${form.descripcion}" />
+						<form:errors path="descripcion"	id="error_descripcion" cssClass="errorCampo" cssStyle="display:none;"/>
+								
+													
 					</dbp:grupoBasico>
 					<div align="center">
 						<p><jsp:include page="/WEB-INF/jsp/includes/botonEnviar.jsp"/></p>
 					</div>
+			
 					
 				</form:form>
 			</p>

@@ -1,0 +1,15 @@
+<taglib 
+   xsi:schemaLocation=    "http://java.sun.com/xml/ns/javaee web-jsptaglibrary_2_1.xsd"
+     xmlns="http://java.sun.com/xml/ns/javaee"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     version="2.1" >
+    <tlib-version>1.0</tlib-version>
+    <short-name>plantilla</short-name>
+    <uri>http://dbp.com/basico/plantilla</uri>
+	<tag-file>
+		<name>erroresNegocio</name>
+		<path>/WEB-INF/tags/erroresNegocio.tag</path>
+	</tag-file>
+
+	
+</taglib>

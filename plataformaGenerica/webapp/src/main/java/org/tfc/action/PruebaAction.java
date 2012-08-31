@@ -1,10 +1,14 @@
 package org.tfc.action;
 
+import org.springframework.validation.AbstractBindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.webflow.execution.Event;
 import org.springframework.webflow.execution.RequestContext;
+import org.tfc.action.utils.ErroresDbpUtils;
 import org.tfc.form.PruebaForm;
+import org.tfc.form.subs.ErroresNegocioSubForm;
 
-public class PruebaAction extends BaseAction{
+public class PruebaAction extends BaseAction<PruebaForm>{
 
 	@Override
 	public Event setupForm(RequestContext context) throws Exception {
@@ -14,20 +18,11 @@ public class PruebaAction extends BaseAction{
 		return valdev;
 	}
 
-	
-	
-	@Override
-	public Event bind(RequestContext context) throws Exception {
-		System.out.println("BIND");
-		return super.bind(context);
-	}
-
-
 
 	public Event confirmar(RequestContext context) throws Exception {
 		PruebaForm form = (PruebaForm)getFormObject(context);
-		System.out.println("Entro"+form.getDescripcion());
-		return success();
+		ErroresDbpUtils.procesarErrorNegocio(form, "Prueba de error");
+		return resolucionEvent(context);
 	}
 	
 }
