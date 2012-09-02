@@ -17,8 +17,9 @@
 
     <action-state id="bookingCancelled" >
     	<evaluate expression="formAction.confirmar"/>
-    	<transition on="success" to="welcome"/>
+    	<transition on="success" to="resultado"/>
     	<transition on="error" to="welcome"/>
     </action-state>
+    <end-state id="resultado" view="resultado"/>
 	<bean-import resource="usuario-bean.xml"/>	
 </flow>

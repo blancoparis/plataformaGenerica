@@ -37,6 +37,10 @@
         <put-attribute name="headjs" value="/WEB-INF/jsp/pruebas/header/cabecera.jsp"/>
         <put-attribute name="body" value="/WEB-INF/jsp/pruebas/formulario.jsp" />
     </definition>
+        <definition name="resultado" extends="base.definition">
+        <put-attribute name="title" value="Resultado" />
+        <put-attribute name="body" value="/WEB-INF/jsp/comunes/resultado.jsp" />
+    </definition>
     
  
 </tiles-definitions>
