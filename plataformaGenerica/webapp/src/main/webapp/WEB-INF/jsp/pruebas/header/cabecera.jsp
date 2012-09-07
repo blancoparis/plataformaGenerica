@@ -21,9 +21,11 @@
 <jsp:include page="/WEB-INF/jsp/includes/head/cabeceraEstandarFormulario.jsp"/> 
 <script type="text/javascript" charset="utf-8">
 
+	/**
+	* Pintar los mensajes de error.
+	**/
 
 	function pintarError(error){
-
 		var n = noty({
 	  		text: error,
 	  		type: 'error',
@@ -33,21 +35,29 @@
 	  		theme: 'default',
 	  		timeout:'10000'
 	  	});
-		
+	}
+	
+	function pintarErroresDesplegable(elementos){
+		var textoError='<table>';
+		textoError+='<tr>';
+		$.each(elementos, function(index, value) { 
+			  textoError+='<td><font size="3">'+$('#'+value.id.replace("error_", "etiqueta_")).text()+'</font></td><td>'+value.innerHTML+'</td>';
+			  
+			});			
+		textoError+'</tr>';
+		pintarError(textoError);
+	}
+	
+	function pintarMensajeEnLosCampos(elementos){
+		$.each(elementos, function(index, value) {
+			  $('#'+value.id.replace("error_", "eror_vista_")).html(value.innerHTML);
+		});
 	}
 
 	$(document).ready(function() {
 		var elementos =$(".errorCampo");
 		if(elementos.size()>0){
-			var textoError='<table>';
-			textoError+='<tr>';
-			$.each(elementos, function(index, value) { 
-
-				  textoError+='<td><font size="3">'+$('#'+value.id.replace("error_", "etiqueta_")).text()+'</font></td><td>'+value.innerHTML+'</td>';
-				});			
-			textoError+'</tr>';
-			pintarError(textoError);
+			pintarMensajeEnLosCampos(elementos);
 		}
-
 	} );
 </script>

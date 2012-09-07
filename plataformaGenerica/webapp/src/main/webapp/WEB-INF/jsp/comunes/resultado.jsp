@@ -6,7 +6,7 @@
 		<section class="articuloDefecto">
 			<h1><font><font></font></font></h1>
 			<p>
-						
+			
 			</p>
 		</section>
 	</article>

@@ -43,8 +43,6 @@
 							label="${etiquetaDescripcion}" readonly="${readOnly}" 
 							requiered="false" value="${form.descripcion}" />
 						<form:errors path="descripcion"	id="error_descripcion" cssClass="errorCampo" cssStyle="display:none;"/>
-								
-													
 					</dbp:grupoBasico>
 					<div align="center">
 						<p><jsp:include page="/WEB-INF/jsp/includes/botonEnviar.jsp"/></p>
