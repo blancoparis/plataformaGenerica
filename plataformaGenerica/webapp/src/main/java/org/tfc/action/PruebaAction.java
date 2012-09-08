@@ -20,6 +20,8 @@ public class PruebaAction extends BaseAction<PruebaForm>{
 		PruebaForm form = (PruebaForm)getFormObject(context);
 		if(form.getDescripcion().equals("error")){
 			ErroresDbpUtils.procesarErrorNegocio(form, "Prueba de error");
+		}else{
+			operacionCorrecta(context);
 		}
 		return resolucionEvent(context);
 	}

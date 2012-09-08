@@ -6,7 +6,20 @@
 		<section class="articuloDefecto">
 			<h1><font><font></font></font></h1>
 			<p>
-			
+			<table>
+				<thead>
+					<tr>
+						<th><fmt:message key="general.operacion.operacion" /></th>
+						<th><fmt:message key="general.operacion.mensaje" /></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><fmt:message key="${form.textoTipoOperacion}"/></td>
+						<td><fmt:message key="${form.mensajeTipoOperacion}"/></td>
+					</tr>
+				</tbody>
+			</table>
 			</p>
 		</section>
 	</article>
