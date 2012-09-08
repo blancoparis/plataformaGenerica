@@ -3,7 +3,7 @@ package org.tfc.form;
 import org.hibernate.validator.constraints.NotBlank;
 
 @SuppressWarnings("serial")
-public class PruebaForm extends BaseForm{
+public class PruebaForm extends OperacionBaseForm<Long>{
 	@NotBlank
 	private String descripcion;
 

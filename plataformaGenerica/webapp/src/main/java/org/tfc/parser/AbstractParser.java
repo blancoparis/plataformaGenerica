@@ -26,11 +26,18 @@ public class AbstractParser <F extends BaseForm,ID extends Serializable, E exten
 		classForm = (Class<F>) GenericUtils
 				.getPrimeroTypeParametroDeclaroOnSuperclass(this.getClass());
 		classEntity=(Class<E>) GenericUtils
-				.getPrimeroTypeParametroDeclaroOnSuperclass(this.getClass(),1);
+				.getPrimeroTypeParametroDeclaroOnSuperclass(this.getClass(),2);
 	}
 
 	public E getEntity(F form) throws InstantiationException, IllegalAccessException, InvocationTargetException{
-		E valdev=classEntity.newInstance();
+		return getEntity(form,null);
+	}
+	
+	public E getEntity(F form,E entity) throws InstantiationException, IllegalAccessException, InvocationTargetException{
+		E valdev= entity;
+		if(valdev==null){
+				valdev=classEntity.newInstance();
+		}
 		BeanUtils.copyProperties(valdev, form);
 		return valdev;
 	}

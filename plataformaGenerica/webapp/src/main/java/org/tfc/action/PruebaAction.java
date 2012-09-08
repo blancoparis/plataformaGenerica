@@ -9,12 +9,17 @@ import org.tfc.form.PruebaForm;
 import org.tfc.parser.PruebaParser;
 import org.tfc.service.PruebaService;
 
-public class PruebaAction extends BaseAction<PruebaForm>{
+public class PruebaAction extends OperacionBaseAction<PruebaForm,Long,Prueba>{
+	
+	@Autowired
+	public void setService(PruebaService service) {
+		super.setService(service);
+	}
 
 	@Autowired
-	private PruebaService service;
-	@Autowired
-	private PruebaParser pruebaParser;
+	public void setParser(PruebaParser parser) {
+		super.setParser(parser);
+	}
 	
 	@Override
 	public Event setupForm(RequestContext context) throws Exception {
@@ -22,19 +27,6 @@ public class PruebaAction extends BaseAction<PruebaForm>{
 		PruebaForm form = (PruebaForm)getFormObject(context);
 		form.setDescripcion("Inicio setup");
 		return valdev;
-	}
-
-
-	public Event confirmar(RequestContext context) throws Exception {
-		PruebaForm form = (PruebaForm)getFormObject(context);
-		if(form.getDescripcion().equals("error")){
-			ErroresDbpUtils.procesarErrorNegocio(form, "Prueba de error");
-		}else{
-			Prueba prueba= pruebaParser.getEntity(form);
-			prueba=service.save(prueba);
-			operacionCorrecta(context);
-		}
-		return resolucionEvent(context);
 	}
 	
 }
