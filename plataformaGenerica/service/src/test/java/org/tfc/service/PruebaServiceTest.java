@@ -1,6 +1,8 @@
 package org.tfc.service;
 
+import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.tfc.GenericServiceTest;
 import org.tfc.bom.Prueba;
 
@@ -17,6 +19,12 @@ public class PruebaServiceTest extends GenericServiceTest<Prueba,Long>{
 	public void setService(PruebaService service) {
 		super.setService(service);
 	}
-	
-
+	@Transactional
+	@Test
+	public void testear(){
+		Prueba elemento = new Prueba();
+		Prueba resultado=getService().save(elemento);
+		System.out.println("Resultado "+ resultado.getId());
+		System.out.println("Eco");
+	}
 }

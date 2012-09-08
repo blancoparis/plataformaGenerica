@@ -3,16 +3,19 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
 	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
               http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
               http://www.springframework.org/schema/jdbc
               http://www.springframework.org/schema/jdbc/spring-jdbc-3.1.xsd
               http://www.springframework.org/schema/context
 			  http://www.springframework.org/schema/context/spring-context-3.1.xsd
+			  http://www.springframework.org/schema/tx 
+   		      http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
               ">
     
 	<context:component-scan base-package="org.tfc" />
-
+	
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
         <property name="driverClass" value="com.mysql.jdbc.Driver" />
         <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/tfc" />
@@ -34,6 +37,7 @@
 		<property name="jpaVendorAdapter">
 			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
 				<property name="database" value="MYSQL" />
+				<property name="showSql" value="true" />
 			</bean>
 		</property>
 	</bean>
@@ -42,5 +46,6 @@
 		class="org.springframework.orm.jpa.JpaTransactionManager">
 		<property name="entityManagerFactory" ref="entityManagerFactory" />
 	</bean>
-
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	
 </beans>
