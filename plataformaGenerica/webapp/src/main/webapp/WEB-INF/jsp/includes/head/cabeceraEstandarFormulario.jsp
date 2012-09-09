@@ -4,6 +4,7 @@
 	$(document).ready(function() {
 		establecerBotonSubmit("botonSubmit","Operación","Desea realizar la operación");
 		procesarEvent("botonSubmit","submit");
+		procesarEvent("botonModificar","establecerModificacion");
 		}
 	);
 		

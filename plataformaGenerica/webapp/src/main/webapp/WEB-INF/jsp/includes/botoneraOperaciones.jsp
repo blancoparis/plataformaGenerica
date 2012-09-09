@@ -4,6 +4,7 @@
 <fmt:bundle basename="app">
 	<c:choose>
 	 	<c:when test="${form.operacionCrud=='CONSULTA'}">
+	 		<jsp:include page="/WEB-INF/jsp/includes/botonModificar.jsp"/>
 	 	</c:when>
 	 	<c:when test="${form.operacionCrud=='ALTA'}">
 	 		<jsp:include page="/WEB-INF/jsp/includes/botonEnviar.jsp"/>

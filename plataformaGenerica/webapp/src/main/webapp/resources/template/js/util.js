@@ -21,7 +21,7 @@ function initMenu() {
 function establecerBotonSubmit(nombreBoton,mensajeTitulo,mensajeConfirmacion){
 	$("#dialog-confirm").attr("title",mensajeTitulo);
 	$("#textoConfirmacion").html(mensajeConfirmacion);
-	$("#"+nombreBoton).data("confirmacionSubmit","inicio");
+	$("#_eventId").data("confirmacionSubmit","inicio");
 	$("#dialog-confirm").dialog({
 		resizable: false,
 		height:200,
@@ -30,7 +30,7 @@ function establecerBotonSubmit(nombreBoton,mensajeTitulo,mensajeConfirmacion){
 		buttons: {
 			Ok:function() {
 				$(this).dialog("close");
-				$("#"+nombreBoton).data("confirmacionSubmit","ok");
+				$("#_eventId").data("confirmacionSubmit","ok");
 				$("form").submit();
 			},
 			Cancel: function() {
@@ -44,7 +44,7 @@ function establecerBotonSubmit(nombreBoton,mensajeTitulo,mensajeConfirmacion){
 
 	if(!$.browser.msie){
 	    $('form').submit(function(){	
-	    		var confirmacionSubmit= $("#"+nombreBoton).data("confirmacionSubmit");
+	    		var confirmacionSubmit= $("#_eventId").data("confirmacionSubmit");
 	    		if(jQuery.type(confirmacionSubmit) === "undefined" || confirmacionSubmit == 'inicio' ){
 			    var b=true;
 			    $('input', this).each(function(){
@@ -56,7 +56,7 @@ function establecerBotonSubmit(nombreBoton,mensajeTitulo,mensajeConfirmacion){
 			    return false;
 	    		}else{
 	    			if(confirmacionSubmit == 'ok'){
-	    				$("#"+nombreBoton).data("confirmacionSubmit","inicio");
+	    				$("#_eventId").data("confirmacionSubmit","inicio");
 	    				return true;
 	    			}else{
 	    				return false;
@@ -68,6 +68,7 @@ function establecerBotonSubmit(nombreBoton,mensajeTitulo,mensajeConfirmacion){
 }
 function procesarEvent(id,eventId){
 	if($("#"+id).html()!=null){
+		$("#"+id).button();
 		$("#"+id).click(function (){
 			$("#_eventId").val(eventId);
 		});

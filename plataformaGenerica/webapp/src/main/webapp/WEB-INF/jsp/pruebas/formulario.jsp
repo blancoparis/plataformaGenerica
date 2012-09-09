@@ -3,15 +3,18 @@
 <fmt:setLocale value="${param.locale}"  />
 <fmt:bundle basename="app">
 <jsp:include page="/WEB-INF/jsp/includes/ventaModalOperaciones.jsp"/>
-<c:set var="readOnly" >${readonly}</c:set>
 	<article>
 		<section>
 			<h1><font><font><fmt:message key="pruebas.formulario.seccion.titulo" /></font></font></h1>
 			<p>
 				<form:form action="${flowExecutionUrl}" commandName="form">
 					<input type="hidden" id="_eventId" name="_eventId" value="" />
-					<plantilla:erroresNegocio form="${form}" />	
 					<input type="hidden" name="_flowExecutionKey"  value="${flowExecutionKey}"/>
+					<plantilla:erroresNegocio form="${form}" />
+					<c:choose>
+						<c:when test="${form.operacionCrud == 'CONSULTA'}"><c:set var="readOnly" value="true"/></c:when>
+						<c:otherwise><c:set var="readOnly" value="false"/></c:otherwise>
+					</c:choose>	
 					<dbp:grupoBasico >
 						<%--
 						<c:set var="etiquetaFecha"><fmt:message key='pruebas.formulario.campo.fecha' /></c:set>
