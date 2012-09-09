@@ -5,6 +5,8 @@
 		establecerBotonSubmit("botonSubmit","Operación","Desea realizar la operación");
 		procesarEvent("botonSubmit","submit");
 		procesarEvent("botonModificar","establecerModificacion");
+		procesarEvent("botonEliminar","eliminar");
+		
 		}
 	);
 		

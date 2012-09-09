@@ -23,26 +23,27 @@
 			<table id="enlaces">
 				<thead>
 					<th>Operacion</th>
-					<th>Enlace</th>
+					<th>Enlace (${form.operacionCrud})</th>
 				</thead>
 				<tbody>
 					<tr>
 						<td>Alta</td>
 						<td><a href="${fn:split(flowExecutionUrl,"?")[0]}">Alta</a></td>
 					</tr>
-					<tr>
-						<td>Consultar</td>
-						<td><a href="${fn:split(flowExecutionUrl,"?")[0]}?id=${form.id}&operacionCrud=CONSULTA">Consultar el registro (${form.id})</a></td>
-					</tr>
-					<tr>
-						<td>Modificar</td>
-						<td><a href="${fn:split(flowExecutionUrl,"?")[0]}?id=${form.id}&operacionCrud=MODIFICAR">Modificar el registro (${form.id})</a></td>
-					</tr>
-					<tr>
-						<td>Eliminar</td>
-						<td><a href="${fn:split(flowExecutionUrl,"?")[0]}?id=${form.id}&operacionCrud=ELIMINAR">Eliminar el registro (${form.id})</a></td>
-					</tr>					
-					
+					<c:if test="${form.operacionCrud != 'ELIMINAR'}">
+						<tr>
+							<td>Consultar</td>
+							<td><a href="${fn:split(flowExecutionUrl,"?")[0]}?id=${form.id}&operacionCrud=CONSULTA">Consultar el registro (${form.id})</a></td>
+						</tr>
+						<tr>
+							<td>Modificar</td>
+							<td><a href="${fn:split(flowExecutionUrl,"?")[0]}?id=${form.id}&operacionCrud=MODIFICAR">Modificar el registro (${form.id})</a></td>
+						</tr>
+						<tr>
+							<td>Eliminar</td>
+							<td><a href="${fn:split(flowExecutionUrl,"?")[0]}?id=${form.id}&operacionCrud=ELIMINAR">Eliminar el registro (${form.id})</a></td>
+						</tr>					
+					</c:if>
 				</tbody>
 			</table>
 			</p>

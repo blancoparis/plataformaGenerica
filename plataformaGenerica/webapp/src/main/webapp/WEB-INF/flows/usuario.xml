@@ -14,7 +14,12 @@
 <!--         	<evaluate expression="formAction.bind"/> -->
         </transition>
         <transition on="establecerModificacion" to="establecerModificacion" bind="true"/>
+        <transition on="eliminar" to="postEliminar" bind="true"/>
     </view-state>
+    <action-state id="postEliminar">
+    	<evaluate expression="formAction.postEliminar"/>
+		<transition on="success" to="bookingCancelled"/>
+    </action-state>
 	<action-state id="establecerModificacion">
 		<evaluate expression="formAction.establecerModificacion"/>
 		<transition on="success" to="welcome"/>

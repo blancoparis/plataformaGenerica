@@ -73,6 +73,12 @@ public class OperacionBaseAction<F extends OperacionBaseForm<ID>,ID extends Seri
 		return success();
 	}
 	
+	public Event postEliminar(RequestContext context) throws Exception{
+		F form = (F)getFormObject(context);
+		form.setOperacionCrud(TipoOperacionCrud.ELIMINAR.name());
+		return success();
+	}
+	
 	public Event confirmar(RequestContext context) throws Exception {
 		Event valdev=null;
 		context.getActiveFlow().getId();
