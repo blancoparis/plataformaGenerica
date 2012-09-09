@@ -59,11 +59,12 @@ public class OperacionBaseAction<F extends OperacionBaseForm<ID>,ID extends Seri
 				break;
 			}
 			case ALTA:{
+				
 				// No hacemos nada
 				break;
 			}
 			case ELIMINAR:{
-				valdev= result("eliminar");
+				procesarError("Esta operacion no es valida");
 				break;
 			}
 		}

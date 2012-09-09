@@ -6,11 +6,10 @@
 
 	<action-state id="setupForm" >
 		<evaluate expression="formAction.setupForm" />
-		<transition on="success" to="welcome"  />
-		<transition on="eliminar" to="operacionResultado"  />  
+		<transition on="success" to="inicioView"  />
 	</action-state>
 
-    <view-state id="welcome" view="pruebaFormulario" model="form" >
+    <view-state id="inicioView" view="pruebaFormulario" model="form" >
         <transition on="submit" to="operacionResultado" validate="true" bind="true" />
         <transition on="establecerModificacion" to="establecerModificacion" bind="true"/>
         <transition on="eliminar" to="postEliminar" bind="true"/>
@@ -21,12 +20,12 @@
     </action-state>
 	<action-state id="establecerModificacion">
 		<evaluate expression="formAction.establecerModificacion"/>
-		<transition on="success" to="welcome"/>
+		<transition on="success" to="inicioView"/>
 	</action-state>
     <action-state id="operacionResultado" >
     	<evaluate expression="formAction.confirmar"/>
     	<transition on="success" to="resultado"/>
-    	<transition on="error" to="welcome"/>
+    	<transition on="error" to="inicioView"/>
     </action-state>
     <end-state id="resultado" view="resultado"/>
 	<bean-import resource="usuario-bean.xml"/>	

@@ -39,10 +39,6 @@
 							<td>Modificar</td>
 							<td><a href="${fn:split(flowExecutionUrl,"?")[0]}?id=${form.id}&operacionCrud=MODIFICAR">Modificar el registro (${form.id})</a></td>
 						</tr>
-						<tr>
-							<td>Eliminar</td>
-							<td><a href="${fn:split(flowExecutionUrl,"?")[0]}?id=${form.id}&operacionCrud=ELIMINAR">Eliminar el registro (${form.id})</a></td>
-						</tr>					
 					</c:if>
 				</tbody>
 			</table>
