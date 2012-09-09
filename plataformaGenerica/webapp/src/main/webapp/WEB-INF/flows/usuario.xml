@@ -10,21 +10,19 @@
 	</action-state>
 
     <view-state id="welcome" view="pruebaFormulario" model="form" >
-        <transition on="submit" to="bookingCancelled" validate="true" bind="true" >
-<!--         	<evaluate expression="formAction.bind"/> -->
-        </transition>
+        <transition on="submit" to="operacionResultado" validate="true" bind="true" />
         <transition on="establecerModificacion" to="establecerModificacion" bind="true"/>
         <transition on="eliminar" to="postEliminar" bind="true"/>
     </view-state>
     <action-state id="postEliminar">
     	<evaluate expression="formAction.postEliminar"/>
-		<transition on="success" to="bookingCancelled"/>
+		<transition on="success" to="operacionResultado"/>
     </action-state>
 	<action-state id="establecerModificacion">
 		<evaluate expression="formAction.establecerModificacion"/>
 		<transition on="success" to="welcome"/>
 	</action-state>
-    <action-state id="bookingCancelled" >
+    <action-state id="operacionResultado" >
     	<evaluate expression="formAction.confirmar"/>
     	<transition on="success" to="resultado"/>
     	<transition on="error" to="welcome"/>
