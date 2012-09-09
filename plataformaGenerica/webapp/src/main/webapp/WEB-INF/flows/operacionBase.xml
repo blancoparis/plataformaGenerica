@@ -1,0 +1,31 @@
+<flow xmlns="http://www.springframework.org/schema/webflow"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.springframework.org/schema/webflow
+                          http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd"
+      start-state="setupForm" abstract="true">
+
+	<action-state id="setupForm" >
+		<evaluate expression="formAction.setupForm" />
+		<transition on="success" to="inicioView"  />
+	</action-state>
+
+    <view-state id="inicioView"  model="form" >
+        <transition on="submit" to="operacionResultado" validate="true" bind="true" />
+        <transition on="establecerModificacion" to="establecerModificacion" bind="true"/>
+        <transition on="eliminar" to="postEliminar" bind="true"/>
+    </view-state>
+    <action-state id="postEliminar">
+    	<evaluate expression="formAction.postEliminar"/>
+		<transition on="success" to="operacionResultado"/>
+    </action-state>
+	<action-state id="establecerModificacion">
+		<evaluate expression="formAction.establecerModificacion"/>
+		<transition on="success" to="inicioView"/>
+	</action-state>
+    <action-state id="operacionResultado" >
+    	<evaluate expression="formAction.confirmar"/>
+    	<transition on="success" to="resultado"/>
+    	<transition on="error" to="inicioView"/>
+    </action-state>
+    <end-state id="resultado" view="resultado"/>
+</flow>

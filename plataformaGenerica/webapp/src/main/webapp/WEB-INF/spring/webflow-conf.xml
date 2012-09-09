@@ -8,8 +8,9 @@
 
 	<!-- Aqui le indicamos donde estan los flujos -->
 	<webflow:flow-registry id="flowRegistry" flow-builder-services="flowBuilderServices">
-		<webflow:flow-location path="/WEB-INF/flows/usuario.xml"
-			id="usuario" />
+		<webflow:flow-location path="/WEB-INF/flows/usuario.xml" id="usuario" />
+		<webflow:flow-location path="/WEB-INF/flows/operacionBase.xml" id="operacionBase" />
+		
 	</webflow:flow-registry>
 	<!-- Es el que los ejecuta Un maximo de 5 flujos 30 fotos de flujo. -->
 	<webflow:flow-executor id="flowExecutor"
