@@ -6,7 +6,7 @@
 		<section class="articuloDefecto">
 			<h1><font><font></font></font></h1>
 			<p>
-			<table>
+			<table id="mensajeResultado" >
 				<thead>
 					<tr>
 						<th><fmt:message key="general.operacion.operacion" /></th>
@@ -18,6 +18,31 @@
 						<td><fmt:message key="${form.textoTipoOperacion}"/></td>
 						<td><fmt:message key="${form.mensajeTipoOperacion}"/></td>
 					</tr>
+				</tbody>
+			</table>
+			<table id="enlaces">
+				<thead>
+					<th>Operacion</th>
+					<th>Enlace</th>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Alta</td>
+						<td><a href="${fn:split(flowExecutionUrl,"?")[0]}">Alta</a></td>
+					</tr>
+					<tr>
+						<td>Consultar</td>
+						<td><a href="${fn:split(flowExecutionUrl,"?")[0]}?id=${form.id}&operacionCrud=CONSULTA">Consultar el registro (${form.id})</a></td>
+					</tr>
+					<tr>
+						<td>Modificar</td>
+						<td><a href="${fn:split(flowExecutionUrl,"?")[0]}?id=${form.id}&operacionCrud=MODIFICAR">Modificar el registro (${form.id})</a></td>
+					</tr>
+					<tr>
+						<td>Eliminar</td>
+						<td><a href="${fn:split(flowExecutionUrl,"?")[0]}?id=${form.id}&operacionCrud=ELIMINAR">Eliminar el registro (${form.id})</a></td>
+					</tr>					
+					
 				</tbody>
 			</table>
 			</p>

@@ -3,6 +3,8 @@ package org.tfc.action;
 import java.io.Serializable;
 import java.lang.reflect.InvocationTargetException;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,6 +16,7 @@ import org.tfc.form.OperacionBaseForm;
 import org.tfc.form.enumerados.TipoOperacionCrud;
 import org.tfc.parser.AbstractParser;
 import org.tfc.service.AbstractService;
+import org.tfc.utils.GenericUtils;
 
 public class OperacionBaseAction<F extends OperacionBaseForm<ID>,ID extends Serializable,E extends EntityBD<ID>> extends BaseAction<F> {
 
@@ -23,23 +26,56 @@ public class OperacionBaseAction<F extends OperacionBaseForm<ID>,ID extends Seri
 	
 	private AbstractService<E,ID> service;
 	
+	private Class<F> classForm;
+	private Class<ID> classID;
+	private Class<E> classEntity;
+	
 	public OperacionBaseAction() {
 		super();
+		classForm = (Class<F>) GenericUtils
+				.getPrimeroTypeParametroDeclaroOnSuperclass(this.getClass());
+		classID = (Class<ID>) GenericUtils
+				.getPrimeroTypeParametroDeclaroOnSuperclass(this.getClass(),1);
+		classEntity=(Class<E>) GenericUtils
+				.getPrimeroTypeParametroDeclaroOnSuperclass(this.getClass(),2);
 	}
 
 	@Override
 	public Event setupForm(RequestContext context) throws Exception {
 		Event valdev= super.setupForm(context);
 		F form = (F)getFormObject(context);
+		form.setOperacionCrud((String)((HttpServletRequest)context.getExternalContext().getNativeRequest()).getParameter("operacionCrud"));
+		if(((HttpServletRequest)context.getExternalContext().getNativeRequest()).getParameter("id")!=null){
+			form.setId((ID)new Long(Long.parseLong((String)((HttpServletRequest)context.getExternalContext().getNativeRequest()).getParameter("id"))));
+		}
 		if(StringUtils.isBlank(form.getOperacionCrud())){
 			form.setOperacionCrud(TipoOperacionCrud.ALTA.name());
 		}
-		logger.debug(" Hemos accedido con la operacion [{}]",form.getTipoOperacion());
+		TipoOperacionCrud tipoOperacionCrud = TipoOperacionCrud.valueOf(form.getOperacionCrud());
+		switch(tipoOperacionCrud){
+			case CONSULTA:
+			case MODIFICAR:{
+				parser.getForm(service.findOne(form.getId()),form);
+				break;
+			}
+			case ALTA:{
+				// No hacemos nada
+				break;
+			}
+		}
+		logger.debug(" Hemos accedido con la operacion [{}] [{}]",form.getOperacionCrud(),form.getId());
 		return valdev;
+	}
+	
+	public Event establecerModificacion(RequestContext context) throws Exception{
+		F form = (F)getFormObject(context);
+		form.setOperacionCrud(TipoOperacionCrud.MODIFICAR.name());
+		return success();
 	}
 	
 	public Event confirmar(RequestContext context) throws Exception {
 		Event valdev=null;
+		context.getActiveFlow().getId();
 		F form = (F)getFormObject(context);
 		procesarOperacion(form);
 		valdev =resolucionEvent(context);
@@ -56,6 +92,9 @@ public class OperacionBaseAction<F extends OperacionBaseForm<ID>,ID extends Seri
 
 	private void procesarOperacion(F form) throws InstantiationException,
 			IllegalAccessException, InvocationTargetException, DbpException {
+		logger.debug("Operacion a realizar la operacion [{}] con el siguiente ID[{}]"
+				,form!=null?form.getOperacionCrud():"El form es nulo"
+				,form!=null?form.getId():"El form es nulo");
 		TipoOperacionCrud operacionCrud =null;
 		if(!StringUtils.isBlank(form.getOperacionCrud())){
 			operacionCrud=TipoOperacionCrud.valueOf(form.getOperacionCrud());

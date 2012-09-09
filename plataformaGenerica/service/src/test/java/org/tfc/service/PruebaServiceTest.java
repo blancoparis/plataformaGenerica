@@ -26,5 +26,7 @@ public class PruebaServiceTest extends GenericServiceTest<Prueba,Long>{
 		Prueba resultado=getService().save(elemento);
 		System.out.println("Resultado "+ resultado.getId());
 		System.out.println("Eco");
+		resultado=getService().findOne(resultado.getId());
+		System.out.println("Resultado "+ resultado.getId());
 	}
 }

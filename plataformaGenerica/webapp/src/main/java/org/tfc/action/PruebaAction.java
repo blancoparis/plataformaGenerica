@@ -24,8 +24,6 @@ public class PruebaAction extends OperacionBaseAction<PruebaForm,Long,Prueba>{
 	@Override
 	public Event setupForm(RequestContext context) throws Exception {
 		Event valdev= super.setupForm(context);
-		PruebaForm form = (PruebaForm)getFormObject(context);
-		form.setDescripcion("Inicio setup");
 		return valdev;
 	}
 	

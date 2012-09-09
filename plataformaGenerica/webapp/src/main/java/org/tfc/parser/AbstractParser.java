@@ -42,8 +42,11 @@ public class AbstractParser <F extends BaseForm,ID extends Serializable, E exten
 		return valdev;
 	}
 	
-	public F getForm(E entity) throws InstantiationException, IllegalAccessException, InvocationTargetException{
-		F valdev=classForm.newInstance();
+	public F getForm(E entity,F form) throws InstantiationException, IllegalAccessException, InvocationTargetException{
+		F valdev=form;
+		if(valdev==null){
+			valdev=classForm.newInstance();
+		}
 		BeanUtils.copyProperties(valdev, entity);
 		return valdev;
 	}

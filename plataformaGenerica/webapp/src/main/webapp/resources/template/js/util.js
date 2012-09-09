@@ -66,6 +66,13 @@ function establecerBotonSubmit(nombreBoton,mensajeTitulo,mensajeConfirmacion){
 	}
 	// TODO falta por montar lo del explorer
 }
+function procesarEvent(id,eventId){
+	if($("#"+id).html()!=null){
+		$("#"+id).click(function (){
+			$("#_eventId").val(eventId);
+		});
+	}
+}
 
         // When document ready, call initMenu() function 
         $(document).ready(function() {

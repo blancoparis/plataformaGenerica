@@ -3,7 +3,7 @@
 <fmt:setLocale value="${param.locale}"  />
 <fmt:bundle basename="app">
 	<c:set var="etiquetaBoton"><fmt:message key="geberal.button.enviar" /></c:set>
-	<input type="submit" value="${etiquetaBoton}" id="botonSubmit" />
-	
+	<input type="submit" value="${etiquetaBoton}" id="botonSubmit" name="_eventId_submit" />
+
 	
 </fmt:bundle>
