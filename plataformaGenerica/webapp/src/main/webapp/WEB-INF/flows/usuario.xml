@@ -6,7 +6,8 @@
 
 	<action-state id="setupForm" >
 		<evaluate expression="formAction.setupForm" />
-		<transition on="success" to="welcome"  /> 
+		<transition on="success" to="welcome"  />
+		<transition on="eliminar" to="operacionResultado"  />  
 	</action-state>
 
     <view-state id="welcome" view="pruebaFormulario" model="form" >

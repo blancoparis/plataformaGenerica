@@ -62,6 +62,10 @@ public class OperacionBaseAction<F extends OperacionBaseForm<ID>,ID extends Seri
 				// No hacemos nada
 				break;
 			}
+			case ELIMINAR:{
+				valdev= result("eliminar");
+				break;
+			}
 		}
 		logger.debug(" Hemos accedido con la operacion [{}] [{}]",form.getOperacionCrud(),form.getId());
 		return valdev;

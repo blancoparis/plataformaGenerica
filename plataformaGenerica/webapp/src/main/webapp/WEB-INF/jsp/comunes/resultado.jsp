@@ -23,7 +23,7 @@
 			<table id="enlaces">
 				<thead>
 					<th>Operacion</th>
-					<th>Enlace (${form.operacionCrud})</th>
+					<th>Enlace (${form.operacionCrud}) Url Base(${fn:split(flowExecutionUrl,"?")[0]}) Url (${flowExecutionUrl})</th>
 				</thead>
 				<tbody>
 					<tr>
