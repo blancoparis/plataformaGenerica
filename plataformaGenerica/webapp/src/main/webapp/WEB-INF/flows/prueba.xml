@@ -5,5 +5,5 @@
       start-state="setupForm" parent="operacionBase">
 	<view-state id="inicioView" view="pruebaFormulario" 
 			model="form" parent="operacionBase#inicioView"/>
-	<bean-import resource="usuario-bean.xml"/>	
+	<bean-import resource="prueba-bean.xml"/>	
 </flow>
