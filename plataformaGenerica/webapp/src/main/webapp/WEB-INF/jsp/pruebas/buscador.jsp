@@ -15,7 +15,9 @@
 
 					</dbp:grupoBasico>
 					<div align="center">
-						<p><jsp:include page="/WEB-INF/jsp/includes/botonBuscar.jsp"/></p>
+						<p><jsp:include page="/WEB-INF/jsp/includes/botonBuscar.jsp"/>
+						<jsp:include page="/WEB-INF/jsp/includes/botonAlta.jsp"/>
+						</p>
 					</div>
 				</form:form>
 				<jsp:include page="/WEB-INF/jsp/pruebas/tablaBuscador.jsp"/>

@@ -30,6 +30,10 @@
 						<td>Alta</td>
 						<td><a href="${fn:split(flowExecutionUrl,"?")[0]}">Alta</a></td>
 					</tr>
+					<tr>
+						<td>Buscador</td>
+						<td><a href='${fn:replace(fn:split(flowExecutionUrl,"?")[0],".htm","Buscador.htm")}'>Buscador</a></td>
+					</tr>
 					<c:if test="${form.operacionCrud != 'ELIMINAR'}">
 						<tr>
 							<td>Consultar</td>

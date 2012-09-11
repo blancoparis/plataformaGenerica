@@ -6,5 +6,7 @@
 		});
 		establecerBotonSubmit("botonSubmit","Operación","Desea realizar la busqueda");
 		procesarEvent("botonSubmit","buscar");
+		procesarEvent("botonAlta","alta");
+		
 	} );
 </script>
