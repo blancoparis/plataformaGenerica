@@ -1,0 +1,31 @@
+<flow xmlns="http://www.springframework.org/schema/webflow"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.springframework.org/schema/webflow
+                          http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd"
+      start-state="setupForm" abstract="true">
+      
+    <action-state id="setupForm" >
+		<evaluate expression="formAction.setupForm" />
+		<transition on="success" to="inicioView"  />
+	</action-state>
+	<view-state id="inicioView" view="pruebaBuscador"  model="form" >
+		<transition on="buscar" to="buscar" bind="true" validate="true"/>
+		<transition on="alta" to="alta"/>
+		<transition on="registro" to="registro"/>
+		<transition on="eliminar" to="eliminar"/>
+	</view-state>
+	<action-state id="eliminar">
+		<evaluate expression="formAction.eliminar" />
+		<transition on="success" to="inicioView"  />
+		<transition on="error" to="inicioView"  />
+	</action-state>
+	
+	<action-state id="buscar">
+		<evaluate expression="formAction.buscar" />
+		<transition on="success" to="inicioView"  />
+		<transition on="error" to="inicioView"  />
+	</action-state>
+	
+	<end-state id="alta" view="flowRedirect:#{flowScope.flow}"/>
+	<end-state id="registro"  view="flowRedirect:#{requestParameters.flow}?id=#{requestParameters.id}&amp;operacionCrud=#{requestParameters.operacionCrud}"/>
+</flow>

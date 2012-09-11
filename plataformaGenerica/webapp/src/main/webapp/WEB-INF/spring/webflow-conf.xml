@@ -11,6 +11,7 @@
 		<webflow:flow-location path="/WEB-INF/flows/prueba.xml" id="prueba" />
 		<webflow:flow-location path="/WEB-INF/flows/operacionBase.xml" id="operacionBase" />
 		<webflow:flow-location path="/WEB-INF/flows/pruebaBuscador.xml" id="pruebaBuscador" />
+		<webflow:flow-location path="/WEB-INF/flows/buscadorBase.xml" id="buscadorBase" />
 		
 	</webflow:flow-registry>
 	<!-- Es el que los ejecuta Un maximo de 5 flujos 30 fotos de flujo. -->
