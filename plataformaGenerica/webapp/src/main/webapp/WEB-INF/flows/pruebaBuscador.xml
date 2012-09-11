@@ -3,6 +3,7 @@
       xsi:schemaLocation="http://www.springframework.org/schema/webflow
                           http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd"
       start-state="setupForm" >
+      
     <action-state id="setupForm" >
 		<evaluate expression="formAction.setupForm" />
 		<transition on="success" to="inicioView"  />
@@ -10,12 +11,15 @@
 	<view-state id="inicioView" view="pruebaBuscador"  model="form" >
 		<transition on="buscar" to="buscar" bind="true" validate="true"/>
 		<transition on="alta" to="alta"/>
+		<transition on="registro" to="registro"/>
 	</view-state>
 	<action-state id="buscar">
 		<evaluate expression="formAction.buscar" />
 		<transition on="success" to="inicioView"  />
 		<transition on="error" to="inicioView"  />
 	</action-state>
-	<end-state id="alta" view="externalRedirect:contextRelative:/prueba.htm"/>
+	
+	<end-state id="alta" view="flowRedirect:prueba"/>
+	<end-state id="registro"  view="flowRedirect:#{requestParameters.flow}?id=#{requestParameters.id}&amp;operacionCrud=#{requestParameters.operacionCrud}"/>
 	<bean-import resource="pruebaBuscador-bean.xml"/>	
 </flow>
