@@ -21,7 +21,6 @@
 					</div>
 				</form:form>
 				<jsp:include page="/WEB-INF/jsp/pruebas/tablaBuscador.jsp"/>
-				<%--<jsp:include page="/WEB-INF/jsp/plantillas/buscador/tablaBuscadorEjemplo.jsp"/>--%>
 			</p>
 		</section>
 		<footer>

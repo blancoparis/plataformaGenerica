@@ -12,7 +12,14 @@
 		<transition on="buscar" to="buscar" bind="true" validate="true"/>
 		<transition on="alta" to="alta"/>
 		<transition on="registro" to="registro"/>
+		<transition on="eliminar" to="eliminar"/>
 	</view-state>
+	<action-state id="eliminar">
+		<evaluate expression="formAction.eliminar" />
+		<transition on="success" to="inicioView"  />
+		<transition on="error" to="inicioView"  />
+	</action-state>
+	
 	<action-state id="buscar">
 		<evaluate expression="formAction.buscar" />
 		<transition on="success" to="inicioView"  />

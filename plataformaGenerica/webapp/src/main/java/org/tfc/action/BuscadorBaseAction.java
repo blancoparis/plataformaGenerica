@@ -1,7 +1,10 @@
 package org.tfc.action;
 
 import java.io.Serializable;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.webflow.execution.Event;
 import org.springframework.webflow.execution.RequestContext;
@@ -54,8 +57,24 @@ public class BuscadorBaseAction
 	@SuppressWarnings("unchecked")
 	public Event buscar(RequestContext context) throws Exception {
 		Event valdev = success();
+		operacionDeBusqueda(context);
+		return valdev;
+	}
+
+	private void operacionDeBusqueda(RequestContext context) throws Exception,
+			InstantiationException, IllegalAccessException,
+			InvocationTargetException {
 		F form = (F) getFormObject(context);
 		form =buscadorParser.getForm(service.findAll(),form);
+	}
+	
+	public Event eliminar(RequestContext context) throws Exception{
+		Event valdev = success();
+		if(((HttpServletRequest)context.getExternalContext().getNativeRequest()).getParameter("id")!=null){
+			ID id=(ID)new Long(Long.parseLong((String)((HttpServletRequest)context.getExternalContext().getNativeRequest()).getParameter("id")));
+			service.deleteById(id);
+			operacionDeBusqueda(context);
+		}
 		return valdev;
 	}
 

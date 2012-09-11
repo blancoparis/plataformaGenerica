@@ -9,7 +9,13 @@
 	<tbody>
 	<c:forEach var="elemento" items="${form.resultado}">
 		<tr>
-			<td><a href="${flowExecutionUrl}&_eventId=registro&id=${elemento.id}&operacionCrud=CONSULTA&flow=prueba">${elemento.id}</a></td>
+			<td>
+			<plantilla:identificadorTabla elemento="${elemento}" etiqueta="${elemento.id}" flujo="prueba"/>
+			<%--
+				<a href="${flowExecutionUrl}&_eventId=registro&id=${elemento.id}&operacionCrud=CONSULTA&flow=prueba">${elemento.id}</a>
+				<a href="${flowExecutionUrl}&_eventId=registro&id=${elemento.id}&operacionCrud=MODIFICAR&flow=prueba">[modificar]</a>
+				--%>
+			</td>
 			<td>${elemento.descripcion}</td>
 		</tr>
 	</c:forEach>

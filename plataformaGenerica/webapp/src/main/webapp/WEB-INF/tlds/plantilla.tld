@@ -10,6 +10,10 @@
 		<name>erroresNegocio</name>
 		<path>/WEB-INF/tags/erroresNegocio.tag</path>
 	</tag-file>
+	<tag-file>
+		<name>identificadorTabla</name>
+		<path>/WEB-INF/tags/identificadorTabla.tag</path>
+	</tag-file>	
 
 	
 </taglib>

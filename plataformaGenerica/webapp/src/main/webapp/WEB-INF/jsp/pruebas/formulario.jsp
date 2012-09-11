@@ -5,8 +5,10 @@
 <jsp:include page="/WEB-INF/jsp/includes/ventaModalOperaciones.jsp"/>
 	<article>
 		<section>
+			
 			<h1><font><font><fmt:message key="pruebas.formulario.seccion.titulo" /></font></font></h1>
 			<p>
+				<jsp:include page="/WEB-INF/jsp/includes/operacionesBasicas.jsp"/>
 				<form:form action="${flowExecutionUrl}" commandName="form">
 					<input type="hidden" id="_eventId" name="_eventId" value="" />
 					<input type="hidden" name="_flowExecutionKey"  value="${flowExecutionKey}"/>
