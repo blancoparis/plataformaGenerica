@@ -2,7 +2,6 @@ package org.tfc.action;
 
 import java.io.Serializable;
 import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -32,6 +31,7 @@ public class BuscadorBaseAction
 
 	@SuppressWarnings("unused")
 	private Class<F> claseFormulario;
+	@SuppressWarnings("unused")
 	private Class<TF> claseTablaSubForm;
 	@SuppressWarnings("unused")
 	private Class<ID> claseId;
@@ -54,7 +54,7 @@ public class BuscadorBaseAction
 				.getPrimeroTypeParametroDeclaroOnSuperclass(this.getClass(), 3);
 	}
 
-	@SuppressWarnings("unchecked")
+
 	public Event buscar(RequestContext context) throws Exception {
 		Event valdev = success();
 		operacionDeBusqueda(context);
@@ -64,6 +64,7 @@ public class BuscadorBaseAction
 	private void operacionDeBusqueda(RequestContext context) throws Exception,
 			InstantiationException, IllegalAccessException,
 			InvocationTargetException {
+		@SuppressWarnings("unchecked")
 		F form = (F) getFormObject(context);
 		form =buscadorParser.getForm(service.findAll(),form);
 	}
@@ -71,6 +72,7 @@ public class BuscadorBaseAction
 	public Event eliminar(RequestContext context) throws Exception{
 		Event valdev = success();
 		if(((HttpServletRequest)context.getExternalContext().getNativeRequest()).getParameter("id")!=null){
+			@SuppressWarnings("unchecked")
 			ID id=(ID)new Long(Long.parseLong((String)((HttpServletRequest)context.getExternalContext().getNativeRequest()).getParameter("id")));
 			service.deleteById(id);
 			operacionDeBusqueda(context);

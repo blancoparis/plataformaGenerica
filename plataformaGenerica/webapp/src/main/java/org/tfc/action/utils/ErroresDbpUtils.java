@@ -1,6 +1,5 @@
 package org.tfc.action.utils;
 
-import org.springframework.webflow.execution.Event;
 import org.tfc.form.BaseForm;
 import org.tfc.form.subs.ErroresNegocioSubForm;
 

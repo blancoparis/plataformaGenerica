@@ -26,10 +26,14 @@ public class OperacionBaseAction<F extends OperacionBaseForm<ID>,ID extends Seri
 	
 	private AbstractService<E,ID> service;
 	
+	@SuppressWarnings("unused")
 	private Class<F> classForm;
+	@SuppressWarnings("unused")
 	private Class<ID> classID;
+	@SuppressWarnings("unused")
 	private Class<E> classEntity;
 	
+	@SuppressWarnings("unchecked")
 	public OperacionBaseAction() {
 		super();
 		classForm = (Class<F>) GenericUtils
@@ -40,6 +44,7 @@ public class OperacionBaseAction<F extends OperacionBaseForm<ID>,ID extends Seri
 				.getPrimeroTypeParametroDeclaroOnSuperclass(this.getClass(),2);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public Event setupForm(RequestContext context) throws Exception {
 		Event valdev= super.setupForm(context);
@@ -73,12 +78,14 @@ public class OperacionBaseAction<F extends OperacionBaseForm<ID>,ID extends Seri
 	}
 	
 	public Event establecerModificacion(RequestContext context) throws Exception{
+		@SuppressWarnings("unchecked")
 		F form = (F)getFormObject(context);
 		form.setOperacionCrud(TipoOperacionCrud.MODIFICAR.name());
 		return success();
 	}
 	
 	public Event postEliminar(RequestContext context) throws Exception{
+		@SuppressWarnings("unchecked")
 		F form = (F)getFormObject(context);
 		form.setOperacionCrud(TipoOperacionCrud.ELIMINAR.name());
 		return success();
@@ -87,6 +94,7 @@ public class OperacionBaseAction<F extends OperacionBaseForm<ID>,ID extends Seri
 	public Event confirmar(RequestContext context) throws Exception {
 		Event valdev=null;
 		context.getActiveFlow().getId();
+		@SuppressWarnings("unchecked")
 		F form = (F)getFormObject(context);
 		procesarOperacion(form);
 		valdev =resolucionEvent(context);
