@@ -1,5 +1,9 @@
 package org.tfc.form;
 
-public class PruebaBuscadorForm extends BaseForm{
+import org.tfc.form.subs.TablaPruebaBuscadorSubForm;
+
+@SuppressWarnings("serial")
+public class PruebaBuscadorForm extends AbstractBuscadorForm<TablaPruebaBuscadorSubForm,Long>{
+
 
 }

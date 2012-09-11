@@ -18,6 +18,7 @@ public class BaseAction<F extends BaseForm> extends FormAction {
 	@Override
 	public Event setupForm(RequestContext context) throws Exception {
 		Event valdev = super.setupForm(context);
+		@SuppressWarnings("unchecked")
 		F form = (F) getFormObject(context);
 		form.setErroresNegocio(new ArrayList<ErroresNegocioSubForm>());
 		return valdev;
@@ -28,6 +29,7 @@ public class BaseAction<F extends BaseForm> extends FormAction {
 		super.initBinder(context, binder);
 	}
 
+	@SuppressWarnings("unchecked")
 	protected Event resolucionEvent(RequestContext context) throws Exception {
 		return resolucionEvent((F) getFormObject(context));
 	}
@@ -54,6 +56,7 @@ public class BaseAction<F extends BaseForm> extends FormAction {
 	 * @throws DbpException
 	 * @throws Exception
 	 */
+	@SuppressWarnings("unchecked")
 	protected void operacionCorrecta(RequestContext context)
 			throws IllegalAccessException, InvocationTargetException,
 			NoSuchMethodException, DbpException, Exception {
@@ -70,6 +73,7 @@ public class BaseAction<F extends BaseForm> extends FormAction {
 	 * @throws DbpException
 	 * @throws Exception
 	 */
+	@SuppressWarnings("unchecked")
 	protected void operacionCorrecta(RequestContext context, String mensaje)
 			throws IllegalAccessException, InvocationTargetException,
 			NoSuchMethodException, DbpException, Exception {
@@ -87,6 +91,7 @@ public class BaseAction<F extends BaseForm> extends FormAction {
 	 * @throws DbpException
 	 * @throws Exception
 	 */
+	@SuppressWarnings("unchecked")
 	protected void operacionError(RequestContext context)
 			throws IllegalAccessException, InvocationTargetException,
 			NoSuchMethodException, DbpException, Exception {
@@ -104,6 +109,7 @@ public class BaseAction<F extends BaseForm> extends FormAction {
 	 * @throws DbpException
 	 * @throws Exception
 	 */
+	@SuppressWarnings("unchecked")
 	protected void operacionError(RequestContext context,String mensaje)
 			throws IllegalAccessException, InvocationTargetException,
 			NoSuchMethodException, DbpException, Exception {
@@ -121,6 +127,7 @@ public class BaseAction<F extends BaseForm> extends FormAction {
 	 * @throws DbpException
 	 * @throws Exception
 	 */
+	@SuppressWarnings("unchecked")
 	protected void operacionDefinida(RequestContext context,String descripcion,String mensaje) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException, DbpException, Exception{
 		OperacionesDebUtils.procesarMensaje((F) getFormObject(context),
 				descripcion,mensaje);

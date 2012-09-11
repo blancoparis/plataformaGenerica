@@ -9,18 +9,21 @@ import org.tfc.form.BaseForm;
 import org.tfc.utils.GenericUtils;
 /**
  * 
- * 
- * 
  * @author David Blanco París
  *
  * @param <F>
+ * @param <ID>
  * @param <E>
  */
-public class AbstractParser <F extends BaseForm,ID extends Serializable, E extends EntityBD<ID>>{
+public class AbstractParser <F extends BaseForm
+, ID extends Serializable, E extends EntityBD<ID>
+>{
 
 	private Class<F> classForm;
 	private Class<E> classEntity;
+
 	
+	@SuppressWarnings("unchecked")
 	public AbstractParser() {
 		super();
 		classForm = (Class<F>) GenericUtils
@@ -41,6 +44,9 @@ public class AbstractParser <F extends BaseForm,ID extends Serializable, E exten
 		BeanUtils.copyProperties(valdev, form);
 		return valdev;
 	}
+	
+
+	
 	
 	public F getForm(E entity,F form) throws InstantiationException, IllegalAccessException, InvocationTargetException{
 		F valdev=form;
