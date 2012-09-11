@@ -1,11 +1,11 @@
-package org.tfc.parser;
+package org.tfc.parser.core;
 
 import java.io.Serializable;
 import java.lang.reflect.InvocationTargetException;
 
 import org.apache.commons.beanutils.BeanUtils;
 import org.tfc.EntityBD;
-import org.tfc.form.BaseForm;
+import org.tfc.form.core.BaseForm;
 import org.tfc.utils.GenericUtils;
 /**
  * 

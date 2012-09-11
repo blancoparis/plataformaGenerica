@@ -1,9 +1,9 @@
-package org.tfc.form;
+package org.tfc.form.core;
 
 import java.io.Serializable;
 import java.util.List;
 
-import org.tfc.form.subs.AbstractTablaSubForm;
+import org.tfc.form.core.subs.AbstractTablaSubForm;
 
 @SuppressWarnings("serial")
 public class AbstractBuscadorForm<TF extends AbstractTablaSubForm<ID>, ID extends Serializable> extends BaseForm {

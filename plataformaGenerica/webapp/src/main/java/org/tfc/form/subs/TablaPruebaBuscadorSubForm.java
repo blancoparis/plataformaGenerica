@@ -1,6 +1,8 @@
 package org.tfc.form.subs;
 
 import java.io.Serializable;
+
+import org.tfc.form.core.subs.AbstractTablaSubForm;
 /**
  * 
  * 

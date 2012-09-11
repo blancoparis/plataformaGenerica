@@ -6,7 +6,7 @@ import org.apache.commons.beanutils.BeanUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.tfc.exception.DbpException;
-import org.tfc.form.BaseForm;
+import org.tfc.form.core.BaseForm;
 import org.tfc.form.enumerados.TipoOperacionResultado;
 
 /**

@@ -1,4 +1,4 @@
-package org.tfc.action;
+package org.tfc.action.core;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
@@ -9,7 +9,7 @@ import org.springframework.webflow.execution.Event;
 import org.springframework.webflow.execution.RequestContext;
 import org.tfc.action.utils.OperacionesDebUtils;
 import org.tfc.exception.DbpException;
-import org.tfc.form.BaseForm;
+import org.tfc.form.core.BaseForm;
 import org.tfc.form.enumerados.TipoOperacionResultado;
 import org.tfc.form.subs.ErroresNegocioSubForm;
 

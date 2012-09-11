@@ -1,6 +1,7 @@
 package org.tfc.action;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.tfc.action.core.BuscadorBaseAction;
 import org.tfc.bom.Prueba;
 import org.tfc.form.PruebaBuscadorForm;
 import org.tfc.form.subs.TablaPruebaBuscadorSubForm;

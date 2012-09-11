@@ -1,4 +1,4 @@
-package org.tfc.action;
+package org.tfc.action.core;
 
 import java.io.Serializable;
 import java.lang.reflect.InvocationTargetException;
@@ -12,9 +12,9 @@ import org.springframework.webflow.execution.Event;
 import org.springframework.webflow.execution.RequestContext;
 import org.tfc.EntityBD;
 import org.tfc.exception.DbpException;
-import org.tfc.form.OperacionBaseForm;
+import org.tfc.form.core.OperacionBaseForm;
 import org.tfc.form.enumerados.TipoOperacionCrud;
-import org.tfc.parser.AbstractParser;
+import org.tfc.parser.core.AbstractParser;
 import org.tfc.service.AbstractService;
 import org.tfc.utils.GenericUtils;
 

@@ -1,4 +1,4 @@
-package org.tfc.action;
+package org.tfc.action.core;
 
 import java.io.Serializable;
 import java.lang.reflect.InvocationTargetException;
@@ -8,9 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.webflow.execution.Event;
 import org.springframework.webflow.execution.RequestContext;
 import org.tfc.EntityBD;
-import org.tfc.form.AbstractBuscadorForm;
-import org.tfc.form.subs.AbstractTablaSubForm;
-import org.tfc.parser.AbstracBuscadorParser;
+import org.tfc.form.core.AbstractBuscadorForm;
+import org.tfc.form.core.subs.AbstractTablaSubForm;
+import org.tfc.parser.core.AbstracBuscadorParser;
 import org.tfc.service.AbstractService;
 import org.tfc.utils.GenericUtils;
 /**

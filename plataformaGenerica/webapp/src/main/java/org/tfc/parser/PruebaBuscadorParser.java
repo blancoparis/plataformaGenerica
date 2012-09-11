@@ -4,6 +4,7 @@ import org.springframework.stereotype.Repository;
 import org.tfc.bom.Prueba;
 import org.tfc.form.PruebaBuscadorForm;
 import org.tfc.form.subs.TablaPruebaBuscadorSubForm;
+import org.tfc.parser.core.AbstracBuscadorParser;
 /**
  * 
  * @author David Blanco París

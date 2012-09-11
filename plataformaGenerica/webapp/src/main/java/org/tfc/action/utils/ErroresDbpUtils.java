@@ -1,6 +1,6 @@
 package org.tfc.action.utils;
 
-import org.tfc.form.BaseForm;
+import org.tfc.form.core.BaseForm;
 import org.tfc.form.subs.ErroresNegocioSubForm;
 
 public class ErroresDbpUtils {

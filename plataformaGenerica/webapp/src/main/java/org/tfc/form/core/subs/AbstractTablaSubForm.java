@@ -1,4 +1,4 @@
-package org.tfc.form.subs;
+package org.tfc.form.core.subs;
 
 import java.io.Serializable;
 /**

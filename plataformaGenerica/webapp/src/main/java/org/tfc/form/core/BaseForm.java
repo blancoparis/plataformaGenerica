@@ -1,4 +1,4 @@
-package org.tfc.form;
+package org.tfc.form.core;
 
 import java.io.Serializable;
 import java.util.List;
