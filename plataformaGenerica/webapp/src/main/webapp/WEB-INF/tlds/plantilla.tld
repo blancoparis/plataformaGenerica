@@ -14,6 +14,8 @@
 		<name>identificadorTabla</name>
 		<path>/WEB-INF/tags/identificadorTabla.tag</path>
 	</tag-file>	
-
-	
+	<tag-file>
+		<name>ventanaModalAceptacion</name>
+		<path>/WEB-INF/tags/ventanaModalAceptacion.tag</path>
+	</tag-file>	
 </taglib>

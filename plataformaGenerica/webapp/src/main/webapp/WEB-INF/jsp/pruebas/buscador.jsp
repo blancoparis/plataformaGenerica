@@ -3,6 +3,7 @@
 <fmt:setLocale value="${param.locale}"  />
 <fmt:bundle basename="app">
 <jsp:include page="/WEB-INF/jsp/includes/ventaModalOperaciones.jsp"/>
+<plantilla:ventanaModalAceptacion id="cancelacionRegistro"/>
 	<article>
 		<section>
 			<h1><font><font><fmt:message key="pruebas.buscador.seccion.titulo" /></font></font></h1>

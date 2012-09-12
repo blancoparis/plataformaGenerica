@@ -75,6 +75,32 @@ function procesarEvent(id,eventId){
 	}
 }
 
+function configurarVentanaAceptacionEliminarRegistro(id,mensaje){
+	//cancelacionRegistro
+	$("#"+id).dialog({
+	resizable: false,
+	height:200,
+	modal: true,
+	autoOpen: false,
+	buttons: {
+		Ok:function() {
+			$(this).dialog("close");
+			window.location=$("#"+id).data("href");
+		},
+		Cancel: function() {
+			$(this).dialog( "close" );
+		}
+	}
+});
+	$("#"+id+"textoConfirmacion").html(mensaje);
+	$(".eliminarRegistro").click(function (){
+		$("#"+id).dialog("open");
+		var href=$(this).attr("href");
+		$("#"+id).data("href",href);
+		return false;
+	});
+}
+
         // When document ready, call initMenu() function 
         $(document).ready(function() {
         	initMenu();
