@@ -5,5 +5,5 @@
 <%@ attribute name="flujo" required="true"  %>
 <a href="${flowExecutionUrl}&_eventId=registro&id=${elemento.id}&operacionCrud=CONSULTA&flow=${flujo}">${etiqueta}</a>
 <a href="${flowExecutionUrl}&_eventId=registro&id=${elemento.id}&operacionCrud=MODIFICAR&flow=${flujo}">[modificar]</a>
-<a href="${flowExecutionUrl}&_eventId=eliminar&id=${elemento.id}" class="eliminarRegistro">[eliminar]</a>
+<a id="enlace${elemento.id}" href="${flowExecutionUrl}&_eventId=eliminar&id=${elemento.id}" class="eliminarRegistro">[eliminar]</a>
 

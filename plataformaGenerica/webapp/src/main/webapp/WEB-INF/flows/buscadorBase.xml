@@ -13,11 +13,18 @@
 		<transition on="alta" to="alta"/>
 		<transition on="registro" to="registro"/>
 		<transition on="eliminar" to="eliminar"/>
+		
+	</view-state>
+	<view-state id="operacionResultado" view="resultadoJson" popup="true">
+		<transition on="buscar" to="buscar" bind="true" validate="true"/>
+		<transition on="alta" to="alta"/>
+		<transition on="registro" to="registro"/>
+		<transition on="eliminar" to="operacionResultado"/>
 	</view-state>
 	<action-state id="eliminar">
 		<evaluate expression="formAction.eliminar" />
-		<transition on="success" to="inicioView"  />
-		<transition on="error" to="inicioView"  />
+		<transition on="success" to="operacionResultado"  />
+		<transition on="error" to="operacionResultado"  />
 	</action-state>
 	
 	<action-state id="buscar">

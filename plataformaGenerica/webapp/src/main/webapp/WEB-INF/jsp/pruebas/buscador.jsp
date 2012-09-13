@@ -13,7 +13,8 @@
 					<input type="hidden" name="_flowExecutionKey"  value="${flowExecutionKey}"/>
 					<plantilla:erroresNegocio form="${form}" />
 					<dbp:grupoBasico >
-
+						${form.operacionResultadoJson.descripcion}
+						<dbp:procesarJson objeto="${form.operacionResultadoJson}"/>
 					</dbp:grupoBasico>
 					<div align="center">
 						<p><jsp:include page="/WEB-INF/jsp/includes/botonBuscar.jsp"/>

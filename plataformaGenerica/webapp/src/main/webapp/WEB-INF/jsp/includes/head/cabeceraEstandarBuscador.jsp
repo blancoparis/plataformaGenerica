@@ -1,4 +1,5 @@
 <script type="text/javascript" charset="utf-8">
+	var oTable;
 	$(document).ready(function() {
 		oTable = $('#tablaResultado').dataTable({
 			"bJQueryUI": true,

@@ -75,8 +75,7 @@ function procesarEvent(id,eventId){
 	}
 }
 
-function configurarVentanaAceptacionEliminarRegistro(id,mensaje){
-	//cancelacionRegistro
+function configurarVentanaAceptacionEliminarRegistro(id,mensaje,table){
 	$("#"+id).dialog({
 	resizable: false,
 	height:200,
@@ -85,7 +84,15 @@ function configurarVentanaAceptacionEliminarRegistro(id,mensaje){
 	buttons: {
 		Ok:function() {
 			$(this).dialog("close");
-			window.location=$("#"+id).data("href");
+			$.getJSON($("#"+id).data("href")
+					  ,
+					  function(data) {
+						  var idFilaTabla='fila'+$("#"+id).data("id");
+						  var anSelected =table.$('#'+idFilaTabla);
+						  if ( anSelected.length !== 0 ) {
+					            oTable.fnDeleteRow( anSelected[0] );
+					      }
+					  });
 		},
 		Cancel: function() {
 			$(this).dialog( "close" );
@@ -96,7 +103,9 @@ function configurarVentanaAceptacionEliminarRegistro(id,mensaje){
 	$(".eliminarRegistro").click(function (){
 		$("#"+id).dialog("open");
 		var href=$(this).attr("href");
+		var idEtiqueta=$(this).attr("id");
 		$("#"+id).data("href",href);
+		$("#"+id).data("id",idEtiqueta);
 		return false;
 	});
 }

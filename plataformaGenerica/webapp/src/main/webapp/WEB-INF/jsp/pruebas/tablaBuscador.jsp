@@ -8,7 +8,7 @@
 	</thead>
 	<tbody>
 	<c:forEach var="elemento" items="${form.resultado}">
-		<tr>
+		<tr id="filaenlace${elemento.id}">
 			<td>
 			<plantilla:identificadorTabla elemento="${elemento}" etiqueta="${elemento.id}" flujo="prueba"/>
 			<%--
