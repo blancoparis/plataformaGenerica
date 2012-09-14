@@ -101,17 +101,19 @@ function configurarVentanaAceptacionEliminarRegistro(id,mensaje,table){
 			var mensajeAnterior;
 			$("#resultado"+id).dialog("open");
 			$("#resultado"+id+"textoConfirmacion").html("Espere mientras se realiza la operación");
-			/*mensajeAnterior=$("#"+id+"textoConfirmacion").html();
-			$("#"+id+"textoConfirmacion").html("Espere mientras se realiza la operación");*/
 			$.getJSON($("#"+id).data("href")
 					  ,
 					  function(data) {
-						  var idFilaTabla='fila'+$("#"+id).data("id");
-						  var anSelected =table.$('#'+idFilaTabla);
-						  if ( anSelected.length !== 0 ) {
-					            oTable.fnDeleteRow( anSelected[0] );
-					      }
-						  $("#resultado"+id).dialog("close");
+						  if(data.operacion=='ok'){
+							  var idFilaTabla='fila'+$("#"+id).data("id");
+							  var anSelected =table.$('#'+idFilaTabla);
+							  if ( anSelected.length !== 0 ) {
+								  oTable.fnDeleteRow( anSelected[0] );
+							  }
+							  $("#resultado"+id).dialog("close");
+						  }else{
+								$("#resultado"+id+"textoConfirmacion").html("Error:"+data.descripcion);				  
+						  }
 					  });
 		},
 		Cancel: function() {

@@ -4,7 +4,18 @@ import java.io.Serializable;
 
 public class OperacionResultadoJson implements Serializable {
 	
+	private String operacion;
+	
 	private String descripcion;
+	
+
+	public String getOperacion() {
+		return operacion;
+	}
+
+	public void setOperacion(String operacion) {
+		this.operacion = operacion;
+	}
 
 	public String getDescripcion() {
 		return descripcion;
