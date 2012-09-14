@@ -74,16 +74,15 @@ function procesarEvent(id,eventId){
 		});
 	}
 }
-
+var ventaCerrar;
 function configurarVentanaAceptacionEliminarRegistro(id,mensaje,table){
-	$("#"+id).dialog({
+	ventaCerrar=$("#"+id).dialog({
 	resizable: false,
 	height:200,
 	modal: true,
 	autoOpen: false,
 	buttons: {
 		Ok:function() {
-			$(this).dialog("close");
 			$.getJSON($("#"+id).data("href")
 					  ,
 					  function(data) {
@@ -92,6 +91,7 @@ function configurarVentanaAceptacionEliminarRegistro(id,mensaje,table){
 						  if ( anSelected.length !== 0 ) {
 					            oTable.fnDeleteRow( anSelected[0] );
 					      }
+						  ventaCerrar.dialog("close");
 					  });
 		},
 		Cancel: function() {
