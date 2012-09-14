@@ -74,15 +74,35 @@ function procesarEvent(id,eventId){
 		});
 	}
 }
-var ventaCerrar;
+
+/**
+ * Se encarga de la gestion de eliminar de un registro
+ * @param id
+ * @param mensaje
+ * @param table
+ */
 function configurarVentanaAceptacionEliminarRegistro(id,mensaje,table){
-	ventaCerrar=$("#"+id).dialog({
+	$("#resultado"+id).dialog({
+		resizable: false,
+		height:200,
+		modal: true,
+		autoOpen: false		
+	});
+	$("#"+id).dialog({
 	resizable: false,
 	height:200,
 	modal: true,
 	autoOpen: false,
-	buttons: {
+	buttons:
+		{
 		Ok:function() {
+			var ventaCerrar=$(this);
+			ventaCerrar.dialog("close");
+			var mensajeAnterior;
+			$("#resultado"+id).dialog("open");
+			$("#resultado"+id+"textoConfirmacion").html("Espere mientras se realiza la operación");
+			/*mensajeAnterior=$("#"+id+"textoConfirmacion").html();
+			$("#"+id+"textoConfirmacion").html("Espere mientras se realiza la operación");*/
 			$.getJSON($("#"+id).data("href")
 					  ,
 					  function(data) {
@@ -91,7 +111,7 @@ function configurarVentanaAceptacionEliminarRegistro(id,mensaje,table){
 						  if ( anSelected.length !== 0 ) {
 					            oTable.fnDeleteRow( anSelected[0] );
 					      }
-						  ventaCerrar.dialog("close");
+						  $("#resultado"+id).dialog("close");
 					  });
 		},
 		Cancel: function() {
