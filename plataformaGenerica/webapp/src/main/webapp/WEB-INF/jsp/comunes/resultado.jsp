@@ -28,7 +28,7 @@
 				<tbody>
 					<tr>
 						<td>Alta</td>
-						<td><a href="${fn:split(flowExecutionUrl,"?")[0]}">Alta</a></td>
+						<td><a autofocus="autofocus" href="${fn:split(flowExecutionUrl,"?")[0]}">Alta</a></td>
 					</tr>
 					<tr>
 						<td>Buscador</td>

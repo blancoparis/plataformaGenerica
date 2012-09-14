@@ -45,7 +45,7 @@
 							requiered="false" />
 						--%>
 						<c:set var="etiquetaDescripcion"><fmt:message key="pruebas.formulario.campo.descripcion" /></c:set>
-						<dbp:campoBasico id="descripcion"	type="text"
+						<dbp:campoBasico autofocus="autofocus" id="descripcion"	type="text"
 							label="${etiquetaDescripcion}" readonly="${readOnly}" 
 							requiered="false" value="${form.descripcion}" />
 						<form:errors path="descripcion"	id="error_descripcion" cssClass="errorCampo" cssStyle="display:none;"/>

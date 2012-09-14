@@ -82,12 +82,7 @@ function procesarEvent(id,eventId){
  * @param table
  */
 function configurarVentanaAceptacionEliminarRegistro(id,mensaje,table){
-	$("#resultado"+id).dialog({
-		resizable: false,
-		height:200,
-		modal: true,
-		autoOpen: false		
-	});
+
 	$("#"+id).dialog({
 	resizable: false,
 	height:200,
@@ -99,11 +94,14 @@ function configurarVentanaAceptacionEliminarRegistro(id,mensaje,table){
 			var ventaCerrar=$(this);
 			ventaCerrar.dialog("close");
 			var mensajeAnterior;
-			$("#resultado"+id).dialog("open");
+			
 			$("#resultado"+id+"textoConfirmacion").html("Espere mientras se realiza la operación");
+			$("#resultado"+id+" .modalEspera").show();
+			$("#resultado"+id).dialog("open");
 			$.getJSON($("#"+id).data("href")
 					  ,
 					  function(data) {
+						 $("#resultado"+id+" .modalEspera").hide();
 						  if(data.operacion=='ok'){
 							  var idFilaTabla='fila'+$("#"+id).data("id");
 							  var anSelected =table.$('#'+idFilaTabla);
@@ -121,6 +119,14 @@ function configurarVentanaAceptacionEliminarRegistro(id,mensaje,table){
 		}
 	}
 });
+	$("#resultado"+id).dialog({
+		resizable: false,
+		height:200,
+		modal: true,
+		autoOpen: false,
+	
+		
+	});
 	$("#"+id+"textoConfirmacion").html(mensaje);
 	$(".eliminarRegistro").click(function (){
 		$("#"+id).dialog("open");
