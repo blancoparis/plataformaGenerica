@@ -77,7 +77,7 @@ public class BuscadorBaseAction
 			service.deleteById(id);
 			operacionDeBusqueda(context);
 		}
-		//Thread.sleep(10000L);
+		Thread.sleep(10000L);
 		return valdev;
 	}
 

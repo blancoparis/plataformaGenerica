@@ -6,9 +6,9 @@
 <plantilla:ventanaModalAceptacion id="cancelacionRegistro" 
 	titulo="general.titulo.ventanaCancelacion" 
 	mensaje="general.mensaje.ventanaCancelacion"/>
-<plantilla:ventanaModalAceptacion id="resultadocancelacionRegistro"/> 
-	<!--  titulo="pruebaBuscador.titulo.ventanaResultadoCacelacion"
-	mensaje="pruebaBuscador.mensaje.ventanaResultadoCacelacion"/> -->
+<plantilla:ventanaModalAceptacion id="resultadocancelacionRegistro"
+	 titulo="general.titulo.ventanaResultadoCacelacion"
+	mensaje="general.mensaje.ventanaResultadoCacelacion"/> 
 	<article>
 		<section>
 			<h1><font><font><fmt:message key="pruebas.buscador.seccion.titulo" /></font></font></h1>
