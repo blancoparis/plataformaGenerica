@@ -82,53 +82,51 @@ function procesarEvent(id,eventId){
  * @param table
  */
 function configurarVentanaAceptacionEliminarRegistro(id,table){
-	$("#"+id).dialog({
+	var idDialogo=id;
+	var idOperacion="resultado"+id;
+	$("#"+idDialogo).dialog({
 	resizable: false,
 	height:200,
 	modal: true,
 	autoOpen: false,
 	buttons:
-		{
-		Ok:function() {
-			$(this).dialog("close");
-			//$("#resultado"+id+"textoConfirmacion").html("Espere mientras se realiza la operación");
-			$("#resultado"+id+" .modalEspera").show();
-			$("#resultado"+id).dialog("open");
-			$.getJSON($("#"+id).data("href"),
-					  function(data) {
-						 $("#resultado"+id+" .modalEspera").hide();
-						  if(data.operacion=='ok'){
-							  var idFilaTabla='fila'+$("#"+id).data("id");
-							  var anSelected =table.$('#'+idFilaTabla);
-							  if ( anSelected.length !== 0 ) {
-								  oTable.fnDeleteRow( anSelected[0] );
+			{
+			Ok:function() {
+				$(this).dialog("close");
+				$("#"+idOperacion+" .modalEspera").show();
+				$("#"+idOperacion).dialog("open");
+				$.getJSON($("#"+id).data("href"),
+						  function(data) {
+							 $("#"+idOperacion+" .modalEspera").hide();
+							  if(data.operacion=='ok'){
+								  var idFilaTabla='fila'+$("#"+idDialogo).data("id");
+								  var anSelected =table.$('#'+idFilaTabla);
+								  if ( anSelected.length !== 0 ) {
+									  oTable.fnDeleteRow( anSelected[0] );
+								  }
+								  $("#"+idOperacion).dialog("close");
+							  }else{
+								  $("#"+idOperacion+"textoConfirmacion").html("Error:"+data.descripcion);				  
 							  }
-							  $("#resultado"+id).dialog("close");
-						  }else{
-							  $("#resultado"+id+"textoConfirmacion").html("Error:"+data.descripcion);				  
-						  }
-					  });
-		},
-		Cancel: function() {
-			$(this).dialog( "close" );
+						  });
+			},
+			Cancel: function() {
+				$(this).dialog( "close" );
+			}
 		}
-	}
-});
-	$("#resultado"+id).dialog({
+	});
+	$("#"+idOperacion).dialog({
 		resizable: false,
 		height:200,
 		modal: true,
 		autoOpen: false,
-	
-		
 	});
-	//$("#"+id+"textoConfirmacion").html(mensaje);
 	$(".eliminarRegistro").click(function (){
-		$("#"+id).dialog("open");
+		$("#"+idDialogo).dialog("open");
 		var href=$(this).attr("href");
 		var idEtiqueta=$(this).attr("id");
-		$("#"+id).data("href",href);
-		$("#"+id).data("id",idEtiqueta);
+		$("#"+idDialogo).data("href",href);
+		$("#"+idDialogo).data("id",idEtiqueta);
 		return false;
 	});
 }

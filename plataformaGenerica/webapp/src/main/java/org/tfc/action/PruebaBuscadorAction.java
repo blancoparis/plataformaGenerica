@@ -34,7 +34,7 @@ public class PruebaBuscadorAction extends BuscadorBaseAction<PruebaBuscadorForm,
 		 //((HttpServletRequest)context.getExternalContext().getNativeRequest()).setAttribute("jsonResultado", "prueba");
 		OperacionResultadoJson operJson = new OperacionResultadoJson();
 		operJson.setDescripcion("Periquito");
-		operJson.setOperacion("error");
+		operJson.setOperacion("ok");
 		PruebaBuscadorForm form =(PruebaBuscadorForm)getFormObject(context);
 		form.setOperacionResultadoJson(operJson);
 		return super.setupForm(context);
