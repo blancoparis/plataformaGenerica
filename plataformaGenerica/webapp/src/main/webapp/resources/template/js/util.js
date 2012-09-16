@@ -120,6 +120,8 @@ function configurarVentanaAceptacionEliminarRegistro(id,table){
 		height:200,
 		modal: true,
 		autoOpen: false,
+		beforeClose: function(event, ui) {
+			return ($("#"+idOperacion+" .modalEspera").css("display") == "none");}
 	});
 	$(".eliminarRegistro").click(function (){
 		$("#"+idDialogo).dialog("open");
