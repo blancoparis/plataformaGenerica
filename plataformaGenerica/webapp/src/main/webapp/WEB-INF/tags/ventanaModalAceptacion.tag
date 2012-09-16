@@ -30,6 +30,7 @@
 		<p>
 			<span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span >
 			<span id="${id}textoConfirmacion">${mensMensaje}</span>
+			<span id="${id}textoConfirmacionExtension"></span>
 			<div class="modalEspera" style="display:none"><img src="<c:url value="/resources/img/cargando.gif"/>" /></div>
 		</p>
 </div>

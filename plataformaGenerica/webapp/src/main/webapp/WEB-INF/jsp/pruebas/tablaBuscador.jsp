@@ -10,7 +10,7 @@
 	<c:forEach var="elemento" items="${form.resultado}">
 		<tr id="filaenlace${elemento.id}">
 			<td>
-			<plantilla:identificadorTabla elemento="${elemento}" etiqueta="${elemento.id}" flujo="prueba"/>
+			<plantilla:identificadorTabla elemento="${elemento}" etiqueta="${elemento.id}" flujo="prueba" descripcionEliminar="Id [${elemento.id}]"/>
 			<%--
 				<a href="${flowExecutionUrl}&_eventId=registro&id=${elemento.id}&operacionCrud=CONSULTA&flow=prueba">${elemento.id}</a>
 				<a href="${flowExecutionUrl}&_eventId=registro&id=${elemento.id}&operacionCrud=MODIFICAR&flow=prueba">[modificar]</a>

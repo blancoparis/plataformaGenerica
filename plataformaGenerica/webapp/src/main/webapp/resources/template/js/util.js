@@ -93,6 +93,7 @@ function configurarVentanaAceptacionEliminarRegistro(id,table){
 			{
 			Ok:function() {
 				$(this).dialog("close");
+				
 				$("#"+idOperacion+" .modalEspera").show();
 				$("#"+idOperacion).dialog("open");
 				$.getJSON($("#"+id).data("href"),
@@ -124,11 +125,12 @@ function configurarVentanaAceptacionEliminarRegistro(id,table){
 			return ($("#"+idOperacion+" .modalEspera").css("display") == "none");}
 	});
 	$(".eliminarRegistro").click(function (){
-		$("#"+idDialogo).dialog("open");
 		var href=$(this).attr("href");
 		var idEtiqueta=$(this).attr("id");
 		$("#"+idDialogo).data("href",href);
 		$("#"+idDialogo).data("id",idEtiqueta);
+		$("#"+idDialogo+"textoConfirmacionExtension").html($("#desripcion"+idEtiqueta).val());
+		$("#"+idDialogo).dialog("open");
 		return false;
 	});
 }
