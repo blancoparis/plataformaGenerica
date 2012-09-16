@@ -11,10 +11,6 @@
 		<tr id="filaenlace${elemento.id}">
 			<td>
 			<plantilla:identificadorTabla elemento="${elemento}" etiqueta="${elemento.id}" flujo="prueba" descripcionEliminar="Id [${elemento.id}]"/>
-			<%--
-				<a href="${flowExecutionUrl}&_eventId=registro&id=${elemento.id}&operacionCrud=CONSULTA&flow=prueba">${elemento.id}</a>
-				<a href="${flowExecutionUrl}&_eventId=registro&id=${elemento.id}&operacionCrud=MODIFICAR&flow=prueba">[modificar]</a>
-				--%>
 			</td>
 			<td>${elemento.descripcion}</td>
 		</tr>

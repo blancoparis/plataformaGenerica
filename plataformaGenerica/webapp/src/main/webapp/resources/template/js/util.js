@@ -44,6 +44,8 @@ function establecerBotonSubmit(nombreBoton,mensajeTitulo,mensajeConfirmacion){
 
 	if(!$.browser.msie){
 	    $('form').submit(function(){	
+	    	var confirmarSubmit=$("#textoConfirmacion").data("mostrarMensaje");
+	    	if(confirmarSubmit=='true'){
 	    		var confirmacionSubmit= $("#_eventId").data("confirmacionSubmit");
 	    		if(jQuery.type(confirmacionSubmit) === "undefined" || confirmacionSubmit == 'inicio' ){
 			    var b=true;
@@ -62,19 +64,38 @@ function establecerBotonSubmit(nombreBoton,mensajeTitulo,mensajeConfirmacion){
 	    				return false;
 	    			}
 	    		}
+	    	}else{
+	    		return true;
+	    	}
 		  });
 	}
 	// TODO falta por montar lo del explorer
 }
+/**
+ * Procesar los eventos ojo.
+ * @param id
+ * @param eventId
+ */
 function procesarEvent(id,eventId){
+	procesarEventMensaje(id,eventId,'');
+}
+
+function procesarEventMensaje(id,eventId,mensaje){
+	procesarEventMensajeValidar(id,eventId,mensaje,"true");
+}
+
+function procesarEventMensajeValidar(id,eventId,mensaje,isMensaje){
 	if($("#"+id).html()!=null){
 		$("#"+id).button();
 		$("#"+id).click(function (){
 			$("#_eventId").val(eventId);
+			if(mensaje!=''){
+				$("#textoConfirmacion").html(mensaje);
+			}
+			$("#textoConfirmacion").data("mostrarMensaje",isMensaje);
 		});
 	}
 }
-
 /**
  * Se encarga de la gestion de eliminar de un registro
  * @param id

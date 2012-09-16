@@ -6,8 +6,8 @@
 			"sPaginationType": "full_numbers"
 		});
 		establecerBotonSubmit("botonSubmit","Operación","Desea realizar la busqueda");
-		procesarEvent("botonSubmit","buscar");
-		procesarEvent("botonAlta","alta");
+		procesarEventMensajeValidar("botonSubmit","buscar","¿Desea realizar la busqueda?","false");
+		procesarEventMensajeValidar("botonAlta","alta","¿Desea dar de alta el registro?","false");
 		
 	} );
 </script>
