@@ -22,6 +22,7 @@
 	<webflow:flow-builder-services id="flowBuilderServices"
 		view-factory-creator="mvcViewFactoryCreator" 
 		validator="validator"
+		conversion-service="defaultConversionService"
 		 />
 	<!-- Establecemos el validador -->	
 	<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />	
@@ -35,7 +36,9 @@
 	</bean>
 	
 	
-
+<bean id="defaultConversionService" class="org.springframework.binding.convert.service.DefaultConversionService">
+    <constructor-arg ref="applicationConversionService" />
+</bean>
 
 
 

@@ -1,8 +1,11 @@
 package org.tfc.action.core;
 
 import java.lang.reflect.InvocationTargetException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.validation.DataBinder;
 import org.springframework.webflow.action.FormAction;
 import org.springframework.webflow.execution.Event;
@@ -27,6 +30,9 @@ public class BaseAction<F extends BaseForm> extends FormAction {
 	@Override
 	protected void initBinder(RequestContext context, DataBinder binder) {
 		super.initBinder(context, binder);
+		 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+	     dateFormat.setLenient(false);
+	     binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, false));
 	}
 
 	@SuppressWarnings("unchecked")

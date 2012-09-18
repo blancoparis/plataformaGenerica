@@ -1,5 +1,7 @@
 package org.tfc.bom;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,6 +18,18 @@ public class Prueba implements EntityBD<Long>{
 
 	private String descripcion;
 	
+	private Date fecha;
+	
+	
+	
+	public Date getFecha() {
+		return fecha;
+	}
+
+	public void setFecha(Date fecha) {
+		this.fecha = fecha;
+	}
+
 	public Long getId() {
 		return id;
 	}

@@ -44,11 +44,19 @@
 							label="${etiquetaPruebaFecha}" readonly="${readOnly}" 
 							requiered="false" />
 						--%>
+						
+						
 						<c:set var="etiquetaDescripcion"><fmt:message key="pruebas.formulario.campo.descripcion" /></c:set>
 						<dbp:campoBasico autofocus="autofocus" id="descripcion"	type="text"
 							label="${etiquetaDescripcion}" readonly="${readOnly}" 
 							requiered="false" value="${form.descripcion}" />
 						<form:errors path="descripcion"	id="error_descripcion" cssClass="errorCampo" cssStyle="display:none;"/>
+						
+						<c:set var="etiquetaFecha"><fmt:message key='pruebas.formulario.campo.fecha' /></c:set>
+						<dbp:campoBasico id="fecha" type="date" 
+							label="${etiquetaFecha}" readonly="${readOnly}"
+							requiered="true" value="${form.fecha}" />
+						<form:errors path="fecha"	id="error_fecha" cssClass="errorCampo" cssStyle="display:none;"/>							
 					</dbp:grupoBasico>
 					<div align="center">
 						<p><jsp:include page="/WEB-INF/jsp/includes/botoneraOperaciones.jsp"/></p>

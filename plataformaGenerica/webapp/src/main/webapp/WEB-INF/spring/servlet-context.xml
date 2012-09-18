@@ -14,6 +14,10 @@
 	<beans:import resource="/webflow-conf.xml"/>
 	
 	<annotation-driven />
+	
+	 
+
+
 
 	<beans:bean id="viewResolver" class="org.springframework.web.servlet.view.ResourceBundleViewResolver">
 	  <beans:property name="basename" value="views"/>
