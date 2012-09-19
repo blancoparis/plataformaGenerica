@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.tfc.GenericDaoTest;
 import org.tfc.bom.Flujo;
 import org.tfc.bom.Menu;
+import org.tfc.bom.Menu.TipoMenu;
 
 
 /**
@@ -27,12 +28,24 @@ public class MenuDaoTest extends GenericDaoTest<Menu,Long> {
 	public void setDaoJpa(MenuDao dao) {
 		super.setDaoJpa(dao);
 	}	
+	
+	
+	
+	
+	public MenuDaoTest() {
+		super(false);
+	}
+
+
+
+
 	@Test
 	public void testInserccionDelFlujo(){
 		Integer elementosFlujoInicial=flujoDao.findAll().size();
 		Menu elemento = new Menu();
 		elemento.setDescripcion("Ejemplo");
 		elemento.setFlujo(flujoDao.findOne(1L));
+		elemento.setTipo(TipoMenu.FLUJO);
 		Menu valdev= getDaoJpa().save(elemento);
 		Long id=valdev.getId();
 		Menu resultado=getDaoJpa().findOne(id);
@@ -50,6 +63,7 @@ public class MenuDaoTest extends GenericDaoTest<Menu,Long> {
 		elemento.setDescripcion("prueba2");
 		Menu menu = new Menu();
 		menu.setFlujo(elemento);
+		menu.setTipo(TipoMenu.FLUJO);
 		Menu valdev=getDaoJpa().save(menu);
 		System.out.println("ID->"+valdev.getId());
 		Menu resultado=getDaoJpa().findOne(valdev.getId());
@@ -90,7 +104,8 @@ public class MenuDaoTest extends GenericDaoTest<Menu,Long> {
 		Menu elemento = new Menu();
 		elemento.setDescripcion("Padre");
 		elemento.setFlujo(flujoDao.findOne(1L));
-		elemento.setHijos(new HashSet<Menu>());
+		elemento.setHijos(new HashSet<Menu>());	
+		elemento.setTipo(TipoMenu.FLUJO);
 		elemento.getHijos().add(hijo1);
 		getDaoJpa().save(elemento);
 		Long idPadre = elemento.getId();
@@ -105,6 +120,7 @@ public class MenuDaoTest extends GenericDaoTest<Menu,Long> {
 		Menu hijo1 = new Menu();
 		hijo1.setDescripcion("h1");
 		hijo1.setFlujo(flujoDao.findOne(1L));
+		hijo1.setTipo(TipoMenu.FLUJO);
 		return hijo1;
 	}
 }

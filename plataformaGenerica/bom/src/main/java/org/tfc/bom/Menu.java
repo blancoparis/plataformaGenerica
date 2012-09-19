@@ -3,7 +3,10 @@ package org.tfc.bom;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,6 +18,8 @@ import javax.persistence.OneToMany;
 
 import org.tfc.EntityBD;
 
+
+
 /**
  * 
  * @author David Blanco París
@@ -22,6 +27,8 @@ import org.tfc.EntityBD;
  */
 @Entity
 public class Menu implements EntityBD<Long>{
+	
+	public enum TipoMenu{GRUPO,FLUJO,ENLACE};
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
@@ -37,7 +44,9 @@ public class Menu implements EntityBD<Long>{
 	@ManyToOne()
 	@JoinColumn(referencedColumnName="id")
 	private Menu padre;
-	
+	@Enumerated(EnumType.STRING)
+	@Column(nullable=false)
+	private TipoMenu tipo;
 	
 
 	public Long getId() {
@@ -78,6 +87,14 @@ public class Menu implements EntityBD<Long>{
 
 	public void setPadre(Menu padre) {
 		this.padre = padre;
+	}
+
+	public TipoMenu getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(TipoMenu tipo) {
+		this.tipo = tipo;
 	}
 	
 	
