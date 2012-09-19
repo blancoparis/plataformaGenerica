@@ -41,13 +41,12 @@ public class Menu implements EntityBD<Long>{
 	@OneToMany(cascade={CascadeType.PERSIST,CascadeType.MERGE},orphanRemoval=false)
 	  @JoinTable(name="hijos")
 	private Set<Menu> hijos;
-	@ManyToOne()
-	@JoinColumn(referencedColumnName="id")
-	private Menu padre;
+	
 	@Enumerated(EnumType.STRING)
 	@Column(nullable=false)
 	private TipoMenu tipo;
 	
+	private String url;
 
 	public Long getId() {
 		return id;
@@ -81,13 +80,7 @@ public class Menu implements EntityBD<Long>{
 		this.hijos = menu;
 	}
 
-	public Menu getPadre() {
-		return padre;
-	}
 
-	public void setPadre(Menu padre) {
-		this.padre = padre;
-	}
 
 	public TipoMenu getTipo() {
 		return tipo;
@@ -95,6 +88,14 @@ public class Menu implements EntityBD<Long>{
 
 	public void setTipo(TipoMenu tipo) {
 		this.tipo = tipo;
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
 	}
 	
 	
