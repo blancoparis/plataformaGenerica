@@ -1,12 +1,14 @@
 package org.tfc.dao;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.tfc.GenericDaoTest;
+import org.tfc.bom.Flujo;
 import org.tfc.bom.Menu;
+
 
 /**
  * 
@@ -25,7 +27,7 @@ public class MenuDaoTest extends GenericDaoTest<Menu,Long> {
 	}	
 	@Test
 	@Transactional
-	public void testValidacionMapeoFlujo(){
+	public void testInserccionDelFlujo(){
 		Integer elementosFlujoInicial=flujoDao.findAll().size();
 		Menu elemento = new Menu();
 		elemento.setDescripcion("Ejemplo");
@@ -37,5 +39,21 @@ public class MenuDaoTest extends GenericDaoTest<Menu,Long> {
 		getDaoJpa().deleteById(id);
 		assertEquals("Ha variado la tabla de los flujos",elementosFlujoInicial,(Integer)flujoDao.findAll().size());
 	}
-	
+	/**
+	 * En este esperamos que al crear un flujo desde fuera nos falle.
+	 */
+	@Test(expected=IllegalStateException.class)
+	@Transactional
+	public void testCreacionFlujo(){
+		Flujo elemento=new Flujo();
+		elemento.setId(2L);
+		elemento.setDescripcion("prueba2");
+		Menu menu = new Menu();
+		menu.setFlujo(elemento);
+		Menu valdev=getDaoJpa().save(menu);
+		System.out.println("ID->"+valdev.getId());
+		Menu resultado=getDaoJpa().findOne(valdev.getId());
+		getDaoJpa().getEntityManager().flush();
+		//System.out.println("Flujos"+flujoDao.findAll().size());
+	}
 }

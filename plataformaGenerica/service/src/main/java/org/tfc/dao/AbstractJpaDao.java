@@ -20,6 +20,7 @@ public interface AbstractJpaDao <T extends EntityBD<ID>, ID extends Serializable
 	  public T update(  T entity );
 	  public void delete(  T entity );
 	  public void deleteById(  ID entityId );
+	  public EntityManager getEntityManager();
 	  // Datos importantes.
 	 /* public EntityManager getEntityManager();
 	  public Class<T> getClazzT(); 
