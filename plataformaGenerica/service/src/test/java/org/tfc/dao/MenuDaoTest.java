@@ -1,12 +1,12 @@
 package org.tfc.dao;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 import java.util.HashSet;
 
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
 import org.tfc.GenericDaoTest;
 import org.tfc.bom.Flujo;
 import org.tfc.bom.Menu;
@@ -106,6 +106,7 @@ public class MenuDaoTest extends GenericDaoTest<Menu,Long> {
 		elemento.setFlujo(flujoDao.findOne(1L));
 		elemento.setHijos(new HashSet<Menu>());	
 		elemento.setTipo(TipoMenu.FLUJO);
+		hijo1.setPadre(elemento);
 		elemento.getHijos().add(hijo1);
 		getDaoJpa().save(elemento);
 		Long idPadre = elemento.getId();
@@ -113,6 +114,10 @@ public class MenuDaoTest extends GenericDaoTest<Menu,Long> {
 		Menu padre = getDaoJpa().findOne(idPadre);
 		assertEquals("Se esperan 2 nodos",getDaoJpa().findAll().size(),2);
 		assertEquals("Tiene un hijo",padre.getHijos().size(),1);
+		for(Menu hijo:padre.getHijos()){
+			assertNotNull(hijo.getPadre());
+			assertEquals(hijo.getPadre().getId(),padre.getId());
+		}
 		return padre;
 	}
 	
