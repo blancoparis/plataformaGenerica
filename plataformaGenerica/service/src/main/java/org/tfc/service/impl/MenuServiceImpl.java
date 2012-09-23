@@ -109,7 +109,22 @@ public class MenuServiceImpl
 	@Transactional(rollbackFor=DbpException.class)
 	public Menu crearOpcionMenu(Menu menu) throws DbpException{
 		Menu valdev=save(menu);
-		Menu nodoRaiz = findOne(ID_NODO_RAIZ);
+		return addDescendiente(ID_NODO_RAIZ, valdev);
+	}
+	
+	/**
+	 * 
+	 * Se encarga de añadir un descendiente al hijo.
+	 * 
+	 * @param idPadre
+	 * @param menu
+	 * @return
+	 * @throws DbpException
+	 */
+	@Transactional(rollbackFor=DbpException.class)
+	public Menu addDescendiente(Long idPadre,Menu menu) throws DbpException{
+		Menu valdev=menu;
+		Menu nodoRaiz = findOne(idPadre);
 		menu.setPadre(nodoRaiz);
 		if(nodoRaiz.getHijos()==null){
 			nodoRaiz.setHijos(new HashSet<Menu>());
@@ -117,6 +132,6 @@ public class MenuServiceImpl
 		nodoRaiz.getHijos().add(valdev);
 		update(nodoRaiz);
 		return valdev;
+		
 	}
-	
 }
