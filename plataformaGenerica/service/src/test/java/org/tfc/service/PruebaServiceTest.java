@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.tfc.GenericServiceTest;
 import org.tfc.bom.Prueba;
+import org.tfc.exception.DbpException;
 
 /**
  * 
@@ -21,7 +22,7 @@ public class PruebaServiceTest extends GenericServiceTest<Prueba,Long>{
 	}
 	@Transactional
 	@Test
-	public void testear(){
+	public void testear() throws DbpException{
 		Prueba elemento = new Prueba();
 		Prueba resultado=getService().save(elemento);
 		System.out.println("Resultado "+ resultado.getId());

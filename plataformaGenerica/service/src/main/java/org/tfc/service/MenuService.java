@@ -1,6 +1,7 @@
 package org.tfc.service;
 
 import org.tfc.bom.Menu;
+import org.tfc.exception.DbpException;
 import org.tfc.service.impl.MenuServiceImpl.TipoErrorMenu;
 /**
  * Interfaz para definir las operaciones de la entidad menu.
@@ -22,4 +23,5 @@ public interface MenuService extends AbstractService<Menu, Long>{
 	 * 
 	 */
 	public TipoErrorMenu  validarEntradaMenu(Menu menu);
+	public Menu crearOpcionMenu(Menu menu) throws DbpException;
 }

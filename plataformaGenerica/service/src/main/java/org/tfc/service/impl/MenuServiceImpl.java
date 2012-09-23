@@ -1,11 +1,15 @@
 package org.tfc.service.impl;
 
+import java.util.HashSet;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import org.tfc.bom.Menu;
 import org.tfc.dao.MenuDao;
+import org.tfc.exception.DbpException;
 import org.tfc.service.MenuService;
 
 @Repository(value = "menuService")
@@ -13,6 +17,9 @@ public class MenuServiceImpl
 	extends AbstractServiceImpl<Menu, Long>
 	implements MenuService{
 	final Logger logger = LoggerFactory.getLogger(MenuServiceImpl.class);
+	
+	public static Long ID_NODO_RAIZ=1L;
+	
 	private MenuDao dao;
 	@Autowired
 	private MenuServiceImpl( MenuDao  dao) {
@@ -21,9 +28,19 @@ public class MenuServiceImpl
 	}
 	
 	public enum TipoErrorMenu{
-		ERROR_EL_PADRE_NO_CORRESPONDE_CON_EL_HIJO,
-		NADA,
+		ERROR_EL_PADRE_NO_CORRESPONDE_CON_EL_HIJO("error.elHijoNoEstaBienAsociadoAlPadre.mensaje"),
+		NADA(null),
 		;
+		String mensaje;
+
+		private TipoErrorMenu(String mensaje) {
+			this.mensaje = mensaje;
+		}
+
+		public String getMensaje() {
+			return mensaje;
+		}
+		
 	}
 	/**
 	 * Se encarga ce controlar la siguientes operaciones:
@@ -60,4 +77,46 @@ public class MenuServiceImpl
 		}
 		return valdev;
 	}
+	@Override
+	@Transactional(rollbackFor=DbpException.class)
+	public Menu save(Menu entity) throws DbpException {
+		TipoErrorMenu tipoErrorMenu=validarEntradaMenu(entity);
+		if(!tipoErrorMenu.equals(TipoErrorMenu.NADA)){
+			throw new DbpException(tipoErrorMenu.mensaje);
+		}else{
+			return super.save(entity);
+		}
+	}
+	@Override
+	@Transactional(rollbackFor=DbpException.class)
+	public Menu update(Menu entity) throws DbpException {
+		TipoErrorMenu tipoErrorMenu=validarEntradaMenu(entity);
+		if(!tipoErrorMenu.equals(TipoErrorMenu.NADA)){
+			throw new DbpException(tipoErrorMenu.mensaje);
+		}else{
+			return super.update(entity);
+		}
+	}
+	
+	/**
+	 * SE encarga de crear una opcion de menu.
+	 *   - Se cuelgan del nodo raiz.
+	 * 
+	 * @param menu
+	 * @return
+	 * @throws DbpException 
+	 */
+	@Transactional(rollbackFor=DbpException.class)
+	public Menu crearOpcionMenu(Menu menu) throws DbpException{
+		Menu valdev=save(menu);
+		Menu nodoRaiz = findOne(ID_NODO_RAIZ);
+		menu.setPadre(nodoRaiz);
+		if(nodoRaiz.getHijos()==null){
+			nodoRaiz.setHijos(new HashSet<Menu>());
+		}
+		nodoRaiz.getHijos().add(valdev);
+		update(nodoRaiz);
+		return valdev;
+	}
+	
 }

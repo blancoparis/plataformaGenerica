@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.transaction.annotation.Transactional;
 import org.tfc.EntityBD;
 import org.tfc.dao.AbstractJpaDao;
+import org.tfc.exception.DbpException;
 import org.tfc.service.AbstractService;
 import org.tfc.utils.GenericUtils;
 
@@ -24,27 +25,27 @@ implements AbstractService<T,ID>{
 		this.dao = dao;
 	}
 	@Transactional(readOnly=true)
-	public T findOne(final ID id) {
+	public T findOne(final ID id) throws DbpException{
 		return dao.findOne( id);
 	}
 	@Transactional(readOnly=true)
-	public List<T> findAll() {
+	public List<T> findAll() throws DbpException{
 		return dao.findAll();
 	}
 	@Transactional
-	public T save(final T entity) {
+	public T save(final T entity) throws DbpException{
 		return dao.save(entity);
 	}
 	@Transactional
-	public T update(final T entity) {
+	public T update(final T entity) throws DbpException{
 		return dao.update(entity);
 	}
 	@Transactional
-	public void delete(final T entity) {
+	public void delete(final T entity) throws DbpException{
 		dao.delete(entity);
 	}
 	@Transactional
-	public void deleteById(final ID entityId) {
+	public void deleteById(final ID entityId) throws DbpException{
 		dao.deleteById(entityId);
 	}	
     

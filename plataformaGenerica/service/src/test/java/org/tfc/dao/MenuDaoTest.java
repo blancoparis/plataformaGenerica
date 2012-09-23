@@ -5,6 +5,7 @@ import static org.junit.Assert.assertNotNull;
 
 import java.util.HashSet;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.tfc.GenericDaoTest;
@@ -71,7 +72,7 @@ public class MenuDaoTest extends GenericDaoTest<Menu,Long> {
 		//System.out.println("Flujos"+flujoDao.findAll().size());
 	}
 
-	
+	@Ignore
 	@Test
 	public void testCrearMenuDesdeMemoria(){
 		Menu padre = crearMenuBasico();
@@ -83,6 +84,7 @@ public class MenuDaoTest extends GenericDaoTest<Menu,Long> {
 	 * Y borramos el hijo.
 	 * 
 	 */
+	@Ignore
 	@Test
 	public void testEliminarMenu(){
 		Menu padre = crearMenuBasico();

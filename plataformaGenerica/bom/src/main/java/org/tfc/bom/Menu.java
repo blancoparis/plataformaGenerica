@@ -28,7 +28,7 @@ import org.tfc.EntityBD;
 @Entity
 public class Menu implements EntityBD<Long>{
 	
-	  public enum TipoMenu{GRUPO,FLUJO,ENLACE};
+	  public enum TipoMenu{RAIZ,GRUPO,FLUJO,ENLACE};
       @Id
       @GeneratedValue(strategy = GenerationType.AUTO)
       private Long id;
