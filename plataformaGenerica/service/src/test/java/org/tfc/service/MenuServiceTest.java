@@ -94,9 +94,19 @@ public class MenuServiceTest extends GenericServiceTest<Menu,Long>{
 		nodoRaiz=getService().findOne(1L);
 		assertEquals("Elmento",nodoRaiz.getHijos().size(),elementosAntes+1);
 		assertTrue("Miramos que el hijo se creado bien",nodoRaiz.getHijos().contains(resultado));
+	}
+	@Test
+	@Transactional
+	public void testCrearOpcionMenuFlujo() throws DbpException{
+		Menu opcionFlujo=new Menu();
+		Menu nodoRaiz=getService().findOne(1L);
+		int elementosAntes=nodoRaiz.getHijos().size();
+		Menu resultado=((MenuService)getService()).crearOpcionMenu(opcionFlujo,1L);
+		nodoRaiz=getService().findOne(1L);
+		assertEquals("Elmento",nodoRaiz.getHijos().size(),elementosAntes+1);
+		assertTrue("Miramos que el hijo se creado bien",nodoRaiz.getHijos().contains(resultado));
 		
 	}
-	
 	
 	@Test
 	@Transactional

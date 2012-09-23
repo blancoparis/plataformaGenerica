@@ -7,9 +7,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+import org.tfc.bom.Flujo;
 import org.tfc.bom.Menu;
+import org.tfc.bom.Menu.TipoMenu;
 import org.tfc.dao.MenuDao;
 import org.tfc.exception.DbpException;
+import org.tfc.service.FlujoService;
 import org.tfc.service.MenuService;
 
 @Repository(value = "menuService")
@@ -19,6 +22,9 @@ public class MenuServiceImpl
 	final Logger logger = LoggerFactory.getLogger(MenuServiceImpl.class);
 	
 	public static Long ID_NODO_RAIZ=1L;
+	
+	@Autowired
+	private FlujoService flujoService; 
 	
 	private MenuDao dao;
 	@Autowired
@@ -112,12 +118,28 @@ public class MenuServiceImpl
 		return addDescendiente(ID_NODO_RAIZ, valdev);
 	}
 	
+	@Transactional(rollbackFor=DbpException.class)
+	public Menu crearOpcionMenu(Menu menu,Long idFlujo) throws DbpException{
+		menu.setFlujo(flujoService.findOne(idFlujo));
+		return crearOpcionMenu(menu,TipoMenu.FLUJO);
+	}
+
+	@Transactional(rollbackFor=DbpException.class)
+	public Menu crearOpcionMenu(Menu menu,TipoMenu tipo) throws DbpException{
+		menu.setTipo(tipo);
+		return crearOpcionMenu(menu);
+	}
+	@Transactional(rollbackFor=DbpException.class)
+	public Menu eliminarEntradaMenu(Menu menu)throws DbpException{
+		return addDescendiente(ID_NODO_RAIZ, menu);
+	}
+	
 	/**
 	 * 
 	 * Se encarga de añadir un descendiente al hijo.
 	 * 
-	 * @param idPadre
-	 * @param menu
+	 * @param idPadre	Es el idPadre al que vamos adjuntar el hijo.
+	 * @param menu		Es la opción de menu que vamos a crear.
 	 * @return
 	 * @throws DbpException
 	 */
