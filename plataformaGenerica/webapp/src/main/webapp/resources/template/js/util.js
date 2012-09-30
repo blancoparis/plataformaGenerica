@@ -156,6 +156,20 @@ function configurarVentanaAceptacionEliminarRegistro(id,table){
 	});
 }
 
+function establecerDatos(json,id){
+	var datalist=$("#"+id);
+	datalist.empty();
+	$.getJSON(json, function(data) {
+		if(data.elementos.length){
+			for(var i=0, len=data.elementos.length; i<len; i++) {
+				var opt = $("<option>"+data.elementos[i].descripcion+"</option>").attr("value", data.elementos[i].id);
+				datalist.append(opt);
+			}				
+		}
+			
+	});
+}
+
         // When document ready, call initMenu() function 
         $(document).ready(function() {
         	initMenu();

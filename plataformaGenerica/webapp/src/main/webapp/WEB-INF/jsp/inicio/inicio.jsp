@@ -1,4 +1,9 @@
 <%@ include file="/WEB-INF/jsp/includes/taglibs.jsp" %>
+<script type="text/javascript">
+	$(document).ready(function (){
+		establecerDatos('/webapp/flujoJson.htm','country');
+	});
+</script>
 <fmt:requestEncoding value="UTF-8" />
 <fmt:setLocale value="${param.locale}"  />
 <fmt:bundle basename="app">
@@ -7,6 +12,10 @@
 			<h1><font><font><fmt:message key="inicio.seccion.titulo" /></font></font></h1>
 			<p>
 			Inicio de datos
+<label for="country_name">Flujo: </label><input id="country_name" name="country_name" type="text" list="country" />
+<datalist id="country">
+	
+</datalist>
 			</p>
 		</section>
 		<footer>
