@@ -170,6 +170,16 @@ function establecerDatos(json,id){
 	});
 }
 
+function establecerJson(){
+	var urlsJson=$(".urlJson");
+	var id="";
+		$.each(urlsJson, function(key, value) { 
+		  id=value.id;
+		  id=id.replace("json_","");
+		  establecerDatos(value.value,id);
+		});
+}
+
         // When document ready, call initMenu() function 
         $(document).ready(function() {
         	initMenu();
