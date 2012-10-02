@@ -12,8 +12,8 @@
 		<section>
 			<h1><font><font><fmt:message key="inicio.seccion.titulo" /></font></font></h1>
 			<p>
-			<plantilla:combo etiqueta="Prueba" entidad="flujo" id="prueba"/>
-			<plantilla:datalist etiqueta="Prueba DataList" entidad="flujo" id="prueba" valor="2"/>
+			<plantilla:combo etiqueta="Prueba" entidad="flujo" id="prueba" valor="2"/>
+			<plantilla:datalist etiqueta="Prueba DataList" entidad="flujo" id="pruebaDataList" valor="2"/>
 			</p>
 		</section>
 		<footer>

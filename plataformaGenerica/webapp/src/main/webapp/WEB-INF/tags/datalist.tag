@@ -9,4 +9,5 @@
 <datalist id="data${id}">
 </datalist>
 <input id="json_data${id}" class="urlJson" type="hidden" value="/webapp/${entidad}Json.htm"/>
+<input id="valorInicial_data${id}" class="valorComboJson" type="hidden" value="${valor}"/>
 

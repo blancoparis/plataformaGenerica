@@ -161,13 +161,17 @@ function establecerDatos(json,id){
 	datalist.empty();
 	$.getJSON(json, function(data) {
 		if(data.elementos.length){
+			var valorInicial=$("#valorInicial_"+id);
 			for(var i=0, len=data.elementos.length; i<len; i++) {
 				var opt = $("<option>"+data.elementos[i].descripcion+"</option>").attr("value", data.elementos[i].id);
+				if(data.elementos[i].id==valorInicial.val()){
+					opt.attr("selected",true);
+				}
 				datalist.append(opt);
 			}				
 		}
-			
 	});
+	
 }
 
 function establecerJson(){
@@ -177,6 +181,8 @@ function establecerJson(){
 		  id=value.id;
 		  id=id.replace("json_","");
 		  establecerDatos(value.value,id);
+
+
 		});
 }
 
