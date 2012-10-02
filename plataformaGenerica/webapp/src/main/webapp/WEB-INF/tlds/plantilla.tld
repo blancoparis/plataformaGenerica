@@ -18,4 +18,13 @@
 		<name>ventanaModalAceptacion</name>
 		<path>/WEB-INF/tags/ventanaModalAceptacion.tag</path>
 	</tag-file>	
+	<tag-file>
+		<name>combo</name>
+		<path>/WEB-INF/tags/combo.tag</path>
+	</tag-file>	
+	<tag-file>
+		<name>datalist</name>
+		<path>/WEB-INF/tags/datalist.tag</path>
+	</tag-file>	
+
 </taglib>

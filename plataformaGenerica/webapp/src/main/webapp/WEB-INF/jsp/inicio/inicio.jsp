@@ -12,17 +12,8 @@
 		<section>
 			<h1><font><font><fmt:message key="inicio.seccion.titulo" /></font></font></h1>
 			<p>
-			Inicio de datos
-			<label for="country_name">Flujo: </label><input id="country_name" name="country_name" type="text" list="country" />
-			<datalist id="country">
-			</datalist>
-			<%--
-			<input id="json_country" class="urlJson" type="hidden" value="/webapp/flujoJson.htm"/>
-			 --%>
-			<select id="flujo" name="flujo"> </select>
-			<%--
-			<input id="json_flujo" class="urlJson" type="hidden" value="/webapp/flujoJson.htm"/>
-			--%>
+			<plantilla:combo etiqueta="Prueba" entidad="flujo" id="prueba"/>
+			<plantilla:datalist etiqueta="Prueba DataList" entidad="flujo" id="prueba" valor="2"/>
 			</p>
 		</section>
 		<footer>
