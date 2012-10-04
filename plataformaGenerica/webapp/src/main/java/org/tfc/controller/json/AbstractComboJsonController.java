@@ -1,6 +1,7 @@
 package org.tfc.controller.json;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,18 +41,40 @@ public abstract class AbstractComboJsonController <T extends EntityCombo<Long>>{
 		json.setElementos(new ArrayList<ElementoListaJsonForm>());
 		ElementoListaJsonForm item = null;
 		if(tipo.isBlanco){
-			item = new ElementoListaJsonForm();
-			item.setId(-1L);
-			item.setDescripcion("");
-			json.getElementos().add(item);
+			establecerValorBlanco(json);
 		}
-		for(T elemento: this.getService().findAll()){
+		if(tipo.isOrdenado){
+			cargarElementos(json, this.getService().findAllOrder());
+		}else{
+			cargarElementos(json, this.getService().findAll());
+		}
+		return json;
+	}
+	/**
+	 * Se encarga de cargar todos los elementos en el JSON.
+	 * @param json
+	 * @param elementos
+	 */
+	private void cargarElementos(ListaFormJson json, List<T> elementos) {
+		ElementoListaJsonForm item;
+		for(T elemento: elementos){
 			item = new ElementoListaJsonForm();
 			item.setId(elemento.getId());
 			item.setDescripcion(elemento.getDescripcion());
 			json.getElementos().add(item);
 		}
-		return json;
+	}
+	/**
+	 * Se encarga de establecer un elemento en blanco.
+	 * @param json
+	 */
+
+	private void establecerValorBlanco(ListaFormJson json) {
+		ElementoListaJsonForm item;
+		item = new ElementoListaJsonForm();
+		item.setId(-1L);
+		item.setDescripcion("");
+		json.getElementos().add(item);
 	}
 	
 	public AbstractComboService<T, Long> getService() {

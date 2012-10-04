@@ -1,6 +1,7 @@
 package org.tfc.dao;
 
 import java.io.Serializable;
+import java.util.List;
 
 import org.tfc.EntityCombo;
 /**
@@ -11,5 +12,6 @@ import org.tfc.EntityCombo;
  * @param <ID>
  */
 public interface AbstractComboJpaDao <T extends EntityCombo<ID>, ID extends Serializable> extends AbstractJpaDao<T,ID>{
+	public List<T> findAllOrder();
 
 }

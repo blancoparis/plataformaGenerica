@@ -1,6 +1,7 @@
 package org.tfc.service;
 
 import java.io.Serializable;
+import java.util.List;
 
 import org.tfc.EntityCombo;
 /**
@@ -12,5 +13,7 @@ import org.tfc.EntityCombo;
  */
 public interface AbstractComboService <T extends EntityCombo<ID>, ID extends Serializable> 
 	extends AbstractService<T,ID> {
+	
+	public List<T> findAllOrder();
 
 }
