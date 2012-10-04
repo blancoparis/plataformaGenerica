@@ -4,7 +4,8 @@
 <%@ attribute name="entidad" required="true"  %>
 <%@ attribute name="etiqueta" required="true"  %>
 <%@ attribute name="valor"   %>
+<c:set var="tipo" value="NADA"/>
 <label for="${id}">${etiqueta} </label>
 <select id="${id}" name="${id}"> </select>
-<input id="json_${id}" class="urlJson" type="hidden"  value="/webapp/${entidad}/json/lista.htm"/>
+<input id="json_${id}" class="urlJson" type="hidden"  value="/webapp/${entidad}/json/${tipo}/lista.htm"/>
 <input id="valorInicial_${id}" class="valorComboJson" type="hidden" value="${valor}"/>

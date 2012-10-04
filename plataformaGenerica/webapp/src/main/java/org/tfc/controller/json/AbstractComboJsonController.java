@@ -1,8 +1,8 @@
 package org.tfc.controller.json;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.tfc.EntityCombo;
@@ -19,8 +19,8 @@ public abstract class AbstractComboJsonController <T extends EntityCombo<Long>>{
 		
 	}
 
-	@RequestMapping("/json/lista")
-	public @ResponseBody  ListaFormJson lista() throws Exception{
+	@RequestMapping("/json/{tipo}/lista")
+	public @ResponseBody  ListaFormJson lista(@PathVariable String tipo) throws Exception{
 		ListaFormJson json=new ListaFormJson();
 		json.setElementos(new ArrayList<ElementoListaJsonForm>());
 		ElementoListaJsonForm item = null;
@@ -30,6 +30,7 @@ public abstract class AbstractComboJsonController <T extends EntityCombo<Long>>{
 			item.setDescripcion(elemento.getDescripcion());
 			json.getElementos().add(item);
 		}
+		System.out.println(" El tipo "+tipo);
 		return json;
 	}
 	
