@@ -18,12 +18,32 @@ public abstract class AbstractComboJsonController <T extends EntityCombo<Long>>{
 		super();
 		
 	}
+	
+	public enum TipoLista{
+		NADA(false,false),
+		BLANCO(true,false),
+		ORDENACION(false,true),
+		BLANCOORDENACION(true,true)
+		;
+		private Boolean isBlanco;
+		private Boolean isOrdenado;
+		private TipoLista(Boolean isBlanco, Boolean isOrdenado) {
+			this.isBlanco = isBlanco;
+			this.isOrdenado = isOrdenado;
+		}
+		
+	}
 
 	@RequestMapping("/json/{tipo}/lista")
-	public @ResponseBody  ListaFormJson lista(@PathVariable String tipo) throws Exception{
+	public @ResponseBody  ListaFormJson lista(@PathVariable TipoLista tipo) throws Exception{
 		ListaFormJson json=new ListaFormJson();
 		json.setElementos(new ArrayList<ElementoListaJsonForm>());
 		ElementoListaJsonForm item = null;
+		if(tipo.isBlanco){
+			item = new ElementoListaJsonForm();
+			item.setId(-1L);
+			item.setDescripcion("");
+		}
 		for(T elemento: this.getService().findAll()){
 			item = new ElementoListaJsonForm();
 			item.setId(elemento.getId());

@@ -26,5 +26,8 @@
 		<name>datalist</name>
 		<path>/WEB-INF/tags/datalist.tag</path>
 	</tag-file>	
-
+	<tag-file>
+		<name>configuracionJsonLista</name>
+		<path>/WEB-INF/tags/configuracionJsonLista.tag</path>
+	</tag-file>	
 </taglib>
