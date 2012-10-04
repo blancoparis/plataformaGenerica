@@ -12,7 +12,7 @@
 		<section>
 			<h1><font><font><fmt:message key="inicio.seccion.titulo" /></font></font></h1>
 			<p>
-			<plantilla:combo etiqueta="Prueba" entidad="flujo" id="prueba" valor="1"/>
+			<plantilla:combo etiqueta="Prueba" entidad="flujo" id="prueba"  tipo="BLANCO"/>
 			<plantilla:datalist etiqueta="Prueba DataList" entidad="flujo" id="pruebaDataList" valor="1"/>
 			</p>
 		</section>

@@ -3,7 +3,16 @@
 <%@ attribute name="id" required="true"  %>
 <%@ attribute name="entidad" required="true"  %>
 <%@ attribute name="valor"   %>
-<c:set var="tipo" value="NADA"/>
+<%@ attribute name="tipo"   %>
+<c:choose>
+	<c:when test="${tipo !=''}">
+		<c:set var="tipo" value="${tipo}"/>
+	</c:when>
+	<c:otherwise>
+		<c:set var="tipo" value="NADA"/>
+	</c:otherwise>
+</c:choose>
+
 <input id="json_${id}" class="urlJson" type="hidden"  value="/webapp/${entidad}/json/${tipo}/lista.htm"/>
 <input id="valorInicial_${id}" class="valorComboJson" type="hidden" value="${valor}"/>
 

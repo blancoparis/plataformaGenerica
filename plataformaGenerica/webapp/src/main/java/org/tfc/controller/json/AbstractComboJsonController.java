@@ -43,6 +43,7 @@ public abstract class AbstractComboJsonController <T extends EntityCombo<Long>>{
 			item = new ElementoListaJsonForm();
 			item.setId(-1L);
 			item.setDescripcion("");
+			json.getElementos().add(item);
 		}
 		for(T elemento: this.getService().findAll()){
 			item = new ElementoListaJsonForm();
@@ -50,7 +51,6 @@ public abstract class AbstractComboJsonController <T extends EntityCombo<Long>>{
 			item.setDescripcion(elemento.getDescripcion());
 			json.getElementos().add(item);
 		}
-		System.out.println(" El tipo "+tipo);
 		return json;
 	}
 	

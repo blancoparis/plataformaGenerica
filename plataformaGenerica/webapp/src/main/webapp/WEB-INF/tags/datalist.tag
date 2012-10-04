@@ -4,7 +4,8 @@
 <%@ attribute name="entidad" required="true"  %>
 <%@ attribute name="etiqueta" required="true"  %>
 <%@ attribute name="valor"   %>
+<%@ attribute name="tipo"   %>
 <label for="${id}">${etiqueta} </label><input id="${id}" name="${id}" type="text" list="data${id}" value="${valor}"/>
 <datalist id="data${id}">
 </datalist>
-<plantilla:configuracionJsonLista entidad="${entidad}" id="data${id}" valor="${valor}"/>
+<plantilla:configuracionJsonLista entidad="${entidad}" id="data${id}" valor="${valor}" tipo="${tipo}"/>
