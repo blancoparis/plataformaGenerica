@@ -5,7 +5,7 @@
 <jsp:include page="/WEB-INF/jsp/includes/ventaModalOperaciones.jsp"/>
 	<article>
 		<section>
-			
+			<plantilla:menu nodo="${form.menu}"/>
 			<h1><font><font><fmt:message key="pruebas.formulario.seccion.titulo" /></font></font></h1>
 			<p>
 				<jsp:include page="/WEB-INF/jsp/includes/operacionesBasicas.jsp"/>

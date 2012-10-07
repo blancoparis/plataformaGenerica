@@ -15,6 +15,7 @@
 			<plantilla:combo etiqueta="Prueba" entidad="flujo" id="prueba"  tipo="BLANCO"/>
 			<plantilla:combo etiqueta="Prueba" entidad="flujo" id="prueba2"  tipo="ORDENACION"/>
 			<plantilla:datalist etiqueta="Prueba DataList" entidad="flujo" id="pruebaDataList" valor="1"/>
+			
 			</p>
 		</section>
 		<footer>

@@ -10,9 +10,11 @@ import org.springframework.validation.DataBinder;
 import org.springframework.webflow.action.FormAction;
 import org.springframework.webflow.execution.Event;
 import org.springframework.webflow.execution.RequestContext;
+import org.tfc.action.utils.MenuDbpUtils;
 import org.tfc.action.utils.OperacionesDebUtils;
 import org.tfc.exception.DbpException;
 import org.tfc.form.core.BaseForm;
+import org.tfc.form.core.subs.NodoArbolSubForm;
 import org.tfc.form.enumerados.TipoOperacionResultado;
 import org.tfc.form.subs.ErroresNegocioSubForm;
 
@@ -24,7 +26,15 @@ public class BaseAction<F extends BaseForm> extends FormAction {
 		@SuppressWarnings("unchecked")
 		F form = (F) getFormObject(context);
 		form.setErroresNegocio(new ArrayList<ErroresNegocioSubForm>());
+		form.setMenu(generarElMenu());
 		return valdev;
+	}
+	/**
+	 * Se encarga de generar el menu.
+	 * @return
+	 */
+	private NodoArbolSubForm generarElMenu(){
+		return MenuDbpUtils.menu();
 	}
 
 	@Override

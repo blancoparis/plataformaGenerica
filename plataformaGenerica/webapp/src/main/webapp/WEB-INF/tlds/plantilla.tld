@@ -6,6 +6,43 @@
     <tlib-version>1.0</tlib-version>
     <short-name>plantilla</short-name>
     <uri>http://dbp.com/basico/plantilla</uri>
+    <tag>
+      <name>menu</name>
+      <tagclass>org.tfc.taglib.MenuTag</tagclass>
+      <info>
+        Print Hello World
+      </info>
+      <attribute>
+	      <name>nodo</name>
+	      <required>true</required>
+	      <rtexprvalue>true</rtexprvalue> 
+      </attribute>
+      <attribute>
+	      <name>context</name>
+	      <required>false</required>
+	      <rtexprvalue>true</rtexprvalue> 
+      </attribute>
+      <attribute>
+	      <name>idMenu</name>
+	      <required>false</required>
+	      <rtexprvalue>true</rtexprvalue> 
+      </attribute>
+      <attribute>
+	      <name>claseIntermedio</name>
+	      <required>false</required>
+	      <rtexprvalue>true</rtexprvalue> 
+      </attribute>          
+      <attribute>
+	      <name>claseHoja</name>
+	      <required>false</required>
+	      <rtexprvalue>true</rtexprvalue> 
+      </attribute>
+      <attribute>
+	      <name>claseMenu</name>
+	      <required>false</required>
+	      <rtexprvalue>true</rtexprvalue> 
+      </attribute>                                         
+    </tag>
 	<tag-file>
 		<name>erroresNegocio</name>
 		<path>/WEB-INF/tags/erroresNegocio.tag</path>
@@ -30,4 +67,5 @@
 		<name>configuracionJsonLista</name>
 		<path>/WEB-INF/tags/configuracionJsonLista.tag</path>
 	</tag-file>	
+	
 </taglib>

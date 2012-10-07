@@ -4,6 +4,8 @@
 <fmt:bundle basename="app">
 	<aside>
     	<nav>
+    	
+    	
        		<ul id="menu">
            		<li><a href="#"><font><font><fmt:message  key="menu.inicio.titulo" /></font></font></a></li>
        			<li>
@@ -17,6 +19,7 @@
 		        </li>
                 <li><a href="#"><font><font><fmt:message  key="menu.contacto.titulo" /></font></font></a></li>                   
             </ul>
+        
    		</nav>
 	</aside>
 </fmt:bundle>    		

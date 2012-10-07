@@ -3,6 +3,7 @@ package org.tfc.form.core;
 import java.io.Serializable;
 import java.util.List;
 
+import org.tfc.form.core.subs.NodoArbolSubForm;
 import org.tfc.form.enumerados.TipoOperacionResultado;
 import org.tfc.form.subs.ErroresNegocioSubForm;
 /**
@@ -27,6 +28,28 @@ public class BaseForm implements Serializable{
 	
 	private String mensajeTipoOperacion;
 	
+	private NodoArbolSubForm menu;
+	
+	private List<NodoArbolSubForm> menuDeMigas;
+	
+	
+	
+	public NodoArbolSubForm getMenu() {
+		return menu;
+	}
+
+	public void setMenu(NodoArbolSubForm menu) {
+		this.menu = menu;
+	}
+
+	public List<NodoArbolSubForm> getMenuDeMigas() {
+		return menuDeMigas;
+	}
+
+	public void setMenuDeMigas(List<NodoArbolSubForm> menuDeMigas) {
+		this.menuDeMigas = menuDeMigas;
+	}
+
 	public List<ErroresNegocioSubForm> getErroresNegocio() {
 		return erroresNegocio;
 	}
