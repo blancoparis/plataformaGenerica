@@ -2,6 +2,9 @@ package org.tfc.action.utils;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.tfc.form.core.subs.NodoArbolSubForm;
 
 /**
@@ -12,6 +15,16 @@ import org.tfc.form.core.subs.NodoArbolSubForm;
  *
  */
 public class MenuDbpUtils {
+	/**
+	 * 
+	 * Se encarga de establecer el menu.
+	 * 
+	 * @param request
+	 */
+	public static void establecerMenu(HttpServletRequest request){
+		HttpSession session=  request.getSession();
+		session.setAttribute("menuDbp", menu());
+	}
 	
 	public static NodoArbolSubForm menu(){
 		return mockMenu();

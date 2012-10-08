@@ -27,28 +27,6 @@ public class BaseForm implements Serializable{
 	private String textoTipoOperacion;
 	
 	private String mensajeTipoOperacion;
-	
-	private NodoArbolSubForm menu;
-	
-	private List<NodoArbolSubForm> menuDeMigas;
-	
-	
-	
-	public NodoArbolSubForm getMenu() {
-		return menu;
-	}
-
-	public void setMenu(NodoArbolSubForm menu) {
-		this.menu = menu;
-	}
-
-	public List<NodoArbolSubForm> getMenuDeMigas() {
-		return menuDeMigas;
-	}
-
-	public void setMenuDeMigas(List<NodoArbolSubForm> menuDeMigas) {
-		this.menuDeMigas = menuDeMigas;
-	}
 
 	public List<ErroresNegocioSubForm> getErroresNegocio() {
 		return erroresNegocio;

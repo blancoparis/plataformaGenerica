@@ -5,6 +5,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.validation.DataBinder;
 import org.springframework.webflow.action.FormAction;
@@ -26,7 +28,9 @@ public class BaseAction<F extends BaseForm> extends FormAction {
 		@SuppressWarnings("unchecked")
 		F form = (F) getFormObject(context);
 		form.setErroresNegocio(new ArrayList<ErroresNegocioSubForm>());
-		form.setMenu(generarElMenu());
+		//form.setMenu(generarElMenu());
+		//((HttpServletRequest)context.getExternalContext().getNativeRequest()).getSession();
+		//MenuDbpUtils.establecerMenu((HttpServletRequest)context.getExternalContext().getNativeRequest());
 		return valdev;
 	}
 	/**

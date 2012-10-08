@@ -15,7 +15,9 @@
 	
 	<annotation-driven />
 	
-	 
+	<interceptors>
+		<beans:bean class="org.tfc.controller.core.MenuInterceptor"/>
+	</interceptors>	 
 
 
 
