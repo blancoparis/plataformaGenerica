@@ -14,6 +14,7 @@ public class NodoArbolSubForm implements Serializable{
 	private Long id;
 	private String descripcion;
 	private String url;
+	private String parametros;
 	private TipoMenu tipo;
 	private List<NodoArbolSubForm> hijos;
 	private NodoArbolSubForm padre;
@@ -53,6 +54,12 @@ public class NodoArbolSubForm implements Serializable{
 	}
 	public void setId(Long id) {
 		this.id = id;
+	}
+	public String getParametros() {
+		return parametros;
+	}
+	public void setParametros(String parametros) {
+		this.parametros = parametros;
 	}
 	
 

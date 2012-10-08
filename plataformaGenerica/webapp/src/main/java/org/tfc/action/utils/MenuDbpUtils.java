@@ -40,8 +40,8 @@ public class MenuDbpUtils {
 		valdev.getHijos().add(mockHijo(2L,valdev,"a2",mockHijo(4L,valdev,"a2b1"),mockHijo(5L,valdev,"a2b2")));
 		valdev.getHijos().add(mockHijo(3L,valdev,"a3"));
 		valdev.getHijos().add(mockHijo(6L,valdev,"Operaciones"
-				,mockHijo(4L,"/inicioAction.htm",valdev,"Inicio")
-				,mockHijo(4L,"/prueba.htm",valdev,"prueba")
+				,mockHijo(7L,"/inicioAction.htm",valdev,"Inicio")
+				,mockHijo(8L,"/prueba.htm",valdev,"prueba")
 				));
 		return valdev;
 	}

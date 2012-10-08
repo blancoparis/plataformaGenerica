@@ -75,9 +75,12 @@ public class MenuTag extends BodyTagSupport{
 			}
 			valdev+="</ul>";
 		}else{
-			valdev+=pintarTextoNodo(UrlSupport.resolveUrl(nodo.getUrl(),context , pageContext),nodo.getDescripcion(),claseHoja);
+			valdev+=pintarTextoNodo(procesarUrl(nodo),nodo.getDescripcion(),claseHoja);
 		}
 		return valdev+"</li>";
+	}
+	private String procesarUrl(NodoArbolSubForm nodo) throws JspException {
+		return UrlSupport.resolveUrl(nodo.getUrl()+"?nodoId="+nodo.getId(),context , pageContext);
 	}
 
 	public String pintarTextoNodo(String url,String descripcion,String clase){
