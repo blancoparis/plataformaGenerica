@@ -11,7 +11,7 @@ import org.tfc.bom.Menu.TipoMenu;
  */
 @SuppressWarnings("serial")
 public class NodoArbolSubForm implements Serializable{
-	
+	private Long id;
 	private String descripcion;
 	private String url;
 	private TipoMenu tipo;
@@ -47,6 +47,12 @@ public class NodoArbolSubForm implements Serializable{
 	}
 	public void setTipo(TipoMenu tipo) {
 		this.tipo = tipo;
+	}
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
 	}
 	
 
